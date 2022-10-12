@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-
 
 public class Card_Unit : Card
 {
+    public Card currentEquipment;
     public TextMesh attackTextComp, defenseTextComp;
     public Transform currentBoardSlot;
     int currentHoveredBoardSlot;
@@ -35,13 +34,13 @@ public class Card_Unit : Card
 
     public void OnMouseDrag()
     {
-        if (teamNum == HandManager.teamNum.T1 && playerNum == HandManager.playerNum.J1)
+        if (teamNum == HandManager.teamNum.T1 && playerNum == HandManager.playerNum.J1 && handManager.Hands[0].actionTokenNumber > 0 && priorityHandler.currentPriority == 0)
         {
             if (handSlotIndex != -1)
             {
                 RaycastHit2D rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition), Mathf.Infinity, LayerMask.GetMask("Slot"));
 
-                if (rayHit && currentHoveredBoardSlot != -1 && boardSlotsManager.boardSlot[currentHoveredBoardSlot] == null)
+                if (rayHit && currentHoveredBoardSlot != -1 /*&& boardSlotsManager.boardSlot[currentHoveredBoardSlot] == null*/)
                 {
                     string[] collName = rayHit.transform.name.Split(" : ");
                     bool condition = collName[1] == "BoardSlot" && collName[2] == teamNum.ToString() && (collName[3] == playerNum.ToString() || collName[3] == "J");
@@ -57,13 +56,35 @@ public class Card_Unit : Card
         }
     }
 
+    public void ChangeStat(int attackChange, int defenseChange)
+    {
+        attack += attackChange;
+        defense += defenseChange;
+        attackTextComp.text = attack.ToString();
+        defenseTextComp.text = defense.ToString();
+    }
+
     void DropCard()
     {
-        if (currentBoardSlot != null)
+        if (currentBoardSlot != null && boardSlotsManager.boardSlot[currentHoveredBoardSlot] == null)
         {
             handManager.Hands[playerIndex].occupied[handSlotIndex] = false;
             handSlotIndex = -1;
             boardSlotsManager.boardSlot[currentHoveredBoardSlot] = this;
+            handManager.Hands[0].actionTokenNumber -= 1;
+            //priorityHandler.currentPriority += 1;
+            StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, currentBoardSlot.position, anchoringAnimCurve, transform, .1f));
+        }
+        else if (currentBoardSlot != null && boardSlotsManager.boardSlot[currentHoveredBoardSlot] != null)
+        {
+            Destroy(boardSlotsManager.boardSlot[currentHoveredBoardSlot].gameObject);
+            handManager.Hands[playerIndex].occupied[handSlotIndex] = false;
+            handSlotIndex = -1;
+            boardSlotsManager.boardSlot[currentHoveredBoardSlot] = this;
+            priorityHandler.PlayerActionFinished(handManager.Hands[0].actionTokenNumber);
+            handManager.Hands[0].actionTokenNumber -= 1;
+            //priorityHandler.currentPriority += 1;
+
             StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, currentBoardSlot.position, anchoringAnimCurve, transform, .1f));
         }
         else
@@ -93,7 +114,7 @@ public class Card_Unit : Card
         if (condition)
         {
             currentHoveredBoardSlot = int.Parse(collName[0]);
-            if (boardSlotsManager.boardSlot[currentHoveredBoardSlot] == null)
+            //if (boardSlotsManager.boardSlot[currentHoveredBoardSlot] == null)
                 currentBoardSlot = collision.transform;
         }
     }

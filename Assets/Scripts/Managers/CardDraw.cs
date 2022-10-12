@@ -22,7 +22,7 @@ public class CardDraw : MonoBehaviour
                 break;
             }
         }
-        Card card = Instantiate(deckManager.decks[playerIndex].deck[deckManager.decks[playerIndex].deck.Count - 1].gameObject, deckManager.decks[playerIndex].deckTransform.position, Quaternion.identity).GetComponent<Card>();
+        Card card = Instantiate(deckManager.decks[playerIndex].deck[0].gameObject, deckManager.decks[playerIndex].deckTransform.position, Quaternion.identity).GetComponent<Card>();
         card.AnchoringPosition = handSlotTarget;
         card.handSlotIndex = handSlotIndex;
         card.playerNum = handManager.Hands[playerIndex].pNum;
@@ -33,7 +33,12 @@ public class CardDraw : MonoBehaviour
             card.cardFrontComp.SetActive(false);
             card.cardFaceRevealed = false;
         }
-        deckManager.decks[playerIndex].deck.RemoveAt(deckManager.decks[playerIndex].deck.Count - 1);
+        else
+        {
+            card.cardBack.SetActive(false);
+        }
+        deckManager.decks[playerIndex].deck.Add(deckManager.decks[playerIndex].deck[0]);
+        deckManager.decks[playerIndex].deck.RemoveAt(0);
     }
 
     private void Update()

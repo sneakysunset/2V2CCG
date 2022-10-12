@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Rendering;
 
 
 public class Card : MonoBehaviour
 {
+    public GameObject cardBack;
     protected CardManager cardManager;
+    protected PriorityHandler priorityHandler;
     public int playerIndex;
     public HandManager.playerNum playerNum;
     public HandManager.teamNum teamNum;
@@ -15,7 +17,7 @@ public class Card : MonoBehaviour
     [Header("Variables")]
 
     public int level;
-    public string cardName, effectText, className;
+    public string cardName, className;
     public Sprite  cardImage, cardOverlay, star1, star2, star3;
     public AnimationCurve anchoringAnimCurve;
     public float hoveredPositionHeight;
@@ -24,7 +26,7 @@ public class Card : MonoBehaviour
     public GameObject cardFrontComp;
     public bool cardFaceRevealed;
     public TextMesh cardNameComp;
-    public TextMesh  cardEffectComp, classNameComp;
+    public TextMesh classNameComp;
     public SpriteRenderer cardImageComp, cardOverlayComp, starComp;
 
     [HideInInspector] public Vector3 AnchoringPosition;
@@ -39,15 +41,20 @@ public class Card : MonoBehaviour
 
     public virtual void Start()
     {
+        if(teamNum == HandManager.teamNum.T2)
+        {
+            hoveredPositionHeight = -hoveredPositionHeight;
+        }
         hoveredStartScale = transform.localScale;
         hoveredEndScale = transform.localScale * hoveredScalingMult;
         hoveredEndPos = AnchoringPosition;
         hoveredEndPos.y += hoveredPositionHeight;
         handManager = FindObjectOfType<HandManager>();
         cardManager = FindObjectOfType<CardManager>();
+        priorityHandler = FindObjectOfType<PriorityHandler>();
         StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, AnchoringPosition, anchoringAnimCurve, transform, 1));
         cardNameComp.text = cardName;
-        cardEffectComp.text = effectText;
+        //cardEffectComp.text = effectText;
         classNameComp.text = className;
 /*        switch (level)
         {
@@ -70,9 +77,11 @@ public class Card : MonoBehaviour
 
     public virtual void OnMouseEnterEvent()
     {
+        
         if(scalerEnum != null) StopCoroutine(scalerEnum);
         scalerEnum = MoveAnimations.LerpToScaling(transform.localScale, hoveredEndScale, anchoringAnimCurve, transform, .2f);
         StartCoroutine(scalerEnum);
+        GetComponent<SortingGroup>().sortingOrder += 1;
 
         if (!dragged && handSlotIndex != -1)
         {
@@ -82,12 +91,14 @@ public class Card : MonoBehaviour
         }
     }
 
+
     public virtual void OnMouseExitEvent()
     {
         if (scalerEnum != null) StopCoroutine(scalerEnum);
         scalerEnum = MoveAnimations.LerpToScaling(transform.localScale, hoveredStartScale, anchoringAnimCurve, transform, .2f);
         StartCoroutine(scalerEnum);
-        if (handSlotIndex != -1)
+        GetComponent<SortingGroup>().sortingOrder += -1;
+        if (handSlotIndex != -1 && !dragged)
         {
             if (posEnum != null) StopCoroutine(posEnum);
             posEnum = MoveAnimations.LerpToAnchor(transform.position, AnchoringPosition, anchoringAnimCurve, transform, .2f);
