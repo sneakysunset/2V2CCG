@@ -138,7 +138,7 @@ public class Card : MonoBehaviour
 
     #region IA Actions
 
-    public virtual void IAPlay(int targetIndex)
+    public virtual void IAPlay(int targetIndex, bool nextTuto)
     {
 
     }

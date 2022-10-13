@@ -606,8 +606,12 @@ MonoBehaviour:
   attackTextComp: {fileID: 1000105244407519406}
   defenseTextComp: {fileID: 1059636796536140571}
   currentBoardSlot: {fileID: 0}
-  attack: 2
-  defense: 1
+  attack: 4
+  defense: 4
+  endCoroutineEffect:
+    m_PersistentCalls:
+      m_Calls: []
+  arrowPointer: {fileID: 9205533881798335585, guid: c7cca51dd9aace641a708d84dd6e8d4d, type: 3}
 --- !u!61 &1813571983806958673
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -70,7 +70,67 @@ public class Card_Unit : Card
                 }
                 base.OnMouseDragEvent();
             }
+            else
+            {
+
+            }
         }
+    }
+
+    public GameObject arrowPointer;
+    Transform arrowHeadPos;
+    LineRenderer arrowLineRenderer;
+    private void OnMouseDown()
+    {
+        if (handSlotIndex == -1 && priorityHandler.currentPriority == 0)
+        {
+            arrowHeadPos = Instantiate(arrowPointer).transform;
+            arrowLineRenderer = arrowHeadPos.GetComponent<LineRenderer>();
+            arrowLineRenderer.SetPosition(0, transform.position);
+        }
+    }
+
+    private void Update()
+    {
+        if (arrowHeadPos != null)
+        {
+            attackArrowPointer();
+        }
+    }
+
+    void attackArrowPointer()
+    {
+        arrowLineRenderer.SetPosition(1, arrowHeadPos.position);
+        arrowHeadPos.rotation = Quaternion.LookRotation(Vector3.forward, arrowHeadPos.position - transform.position);
+        RaycastHit2D rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition), Mathf.Infinity, LayerMask.GetMask("Slot"));
+       
+        if (rayHit)
+        {
+            string[] collName = rayHit.transform.name.Split(" : ");
+            //currentHoveredBoardSlot = int.Parse(collName[0]);
+       
+            bool condition = collName[1] == "BoardSlot" && collName[2] != teamNum.ToString();
+            if (condition)
+            {
+                arrowHeadPos.position = rayHit.transform.position;
+                if (Input.GetMouseButtonUp(0))
+                {
+                    print("attack");
+                }
+                return;
+            }
+       
+        }
+        var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        pos.z = 0;
+        arrowHeadPos.position = pos;
+       
+       
+        if (Input.GetMouseButtonUp(0))
+        {
+            Destroy(arrowHeadPos.gameObject);
+        }
+       
     }
 
     public void ChangeStat(int attackChange, int defenseChange)
@@ -86,12 +146,15 @@ public class Card_Unit : Card
         if (currentHoveredBoardSlot != -1 && boardSlotsManager.boardSlot[currentHoveredBoardSlot] == null)
         {
             boardSlotsManager.boardSlot[currentHoveredBoardSlot] = this;
+            tutorialManager.tutorialPlaying = false;
             base.CardUsed();
         }
         else if (currentHoveredBoardSlot != -1 && boardSlotsManager.boardSlot[currentHoveredBoardSlot] != null)
         {
             Destroy(boardSlotsManager.boardSlot[currentHoveredBoardSlot].gameObject);
             boardSlotsManager.boardSlot[currentHoveredBoardSlot] = this;
+            tutorialManager.tutorialPlaying = false;
+
             base.CardUsed();
         }
         else
@@ -113,10 +176,11 @@ public class Card_Unit : Card
     #endregion
 
     #region IA Actions
-
-    public override void IAPlay(int targetIndex)
+    bool tuto;
+    public override void IAPlay(int targetIndex, bool nextTuto)
     {
-        base.IAPlay(targetIndex);
+        tuto = nextTuto;
+        base.IAPlay(targetIndex, nextTuto);
         IAtargetIndex = targetIndex;
         if(priorityHandler.currentPriority > 1)
         {
@@ -134,7 +198,8 @@ public class Card_Unit : Card
         boardSlotsManager.boardSlot[IAtargetIndex] = this;
         base.CardUsed();
         tutorialManager.tutorialIndex++;
-        tutorialManager.tutorialPlaying = false;
+        if(!tuto)
+            tutorialManager.tutorialPlaying = false;
 
     }
 

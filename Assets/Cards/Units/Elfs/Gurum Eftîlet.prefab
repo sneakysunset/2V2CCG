@@ -608,6 +608,10 @@ MonoBehaviour:
   currentBoardSlot: {fileID: 0}
   attack: 7
   defense: 2
+  endCoroutineEffect:
+    m_PersistentCalls:
+      m_Calls: []
+  arrowPointer: {fileID: 9205533881798335585, guid: c7cca51dd9aace641a708d84dd6e8d4d, type: 3}
 --- !u!61 &1813571983806958673
 BoxCollider2D:
   m_ObjectHideFlags: 0

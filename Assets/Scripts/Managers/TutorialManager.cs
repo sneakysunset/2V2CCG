@@ -6,9 +6,11 @@ using UnityEngine.Events;
 [System.Serializable]
 public struct unityEvent
 {
-    public UnityEvent<int, int> tutorialCall;
+    public string TutorialStep;
+    public UnityEvent<int, int, bool> tutorialCall;
     public int handSlotTargetOrDrawPlayerIndex;
     public int slotTargetOrDrawNumber;
+    public bool nextTuto;
 }
 
 public class TutorialManager : MonoBehaviour
@@ -22,14 +24,10 @@ public class TutorialManager : MonoBehaviour
     public bool tutorialPlaying;
 
 
-    private void Start()
-    {
-        cardDrawer.DrawCard(0, 4);
-    }
 
     private void Update()
     {
-        if(!tutorialPlaying && priorityHandler.currentPriority != 0)
+        if(!tutorialPlaying /*&& priorityHandler.currentPriority != 0*/)
         {
             tutorialPlaying = true;
             StartCoroutine(SimpleTimer());
@@ -39,7 +37,11 @@ public class TutorialManager : MonoBehaviour
     IEnumerator SimpleTimer()
     {
         yield return new WaitForSeconds(1);
-        tutorialEvents[tutorialIndex].tutorialCall.Invoke(tutorialEvents[tutorialIndex].handSlotTargetOrDrawPlayerIndex, tutorialEvents[tutorialIndex].slotTargetOrDrawNumber);
+        tutorialEvents[tutorialIndex].tutorialCall.Invoke(tutorialEvents[tutorialIndex].handSlotTargetOrDrawPlayerIndex, tutorialEvents[tutorialIndex].slotTargetOrDrawNumber, tutorialEvents[tutorialIndex].nextTuto);
+    }
 
+    public void TutoTrigger()
+    {
+        tutorialPlaying = false;
     }
 }

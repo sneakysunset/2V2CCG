@@ -12,15 +12,16 @@ public class CardDraw : MonoBehaviour
     [HideInInspector]public UnityEvent cardAnimEnd;
     int i;
     int playerIndexProxy, drawNumberProxy;
+    bool nextTutoProxy;
     private void Awake()
     {
         this.cardAnimEnd.AddListener(() => this.CardAnimEnd());
     }
-    public void DrawCard(int playerIndex, int drawNumber)
+    public void DrawCard(int playerIndex, int drawNumber, bool nextTuto)
     {
         playerIndexProxy = playerIndex;
         drawNumberProxy = drawNumber;
-        //print(i);
+        nextTutoProxy = nextTuto;
 
         Vector3 handSlotTarget = Vector3.zero;
         int handSlotIndex = 0;
@@ -64,18 +65,19 @@ public class CardDraw : MonoBehaviour
         i++;
         if (i < drawNumberProxy)
         {
-            DrawCard(playerIndexProxy, drawNumberProxy);
+            DrawCard(playerIndexProxy, drawNumberProxy, nextTutoProxy);
         }
         else
         {
             playerIndexProxy = 0;
             drawNumberProxy = 0;
             i = 0;
-            if (priorityHandler.currentPriority != 0)
-            {
-                tutorialManager.tutorialIndex++;
+
+           tutorialManager.tutorialIndex++;
+            if(!nextTutoProxy)
                 tutorialManager.tutorialPlaying = false;
-            }
+
+            nextTutoProxy = false;
         }
     }
 
@@ -83,22 +85,22 @@ public class CardDraw : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            DrawCard(0, 1);
+            DrawCard(0, 1, true);
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            DrawCard(1, 1);
+            DrawCard(1, 1, true);
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            DrawCard(2, 1);
+            DrawCard(2, 1, true);
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            DrawCard(3, 1);
+            DrawCard(3, 1, true);
         }
     }
 }

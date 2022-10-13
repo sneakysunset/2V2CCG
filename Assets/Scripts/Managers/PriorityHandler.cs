@@ -11,9 +11,11 @@ public class PriorityHandler : MonoBehaviour
     public Image PriorityButtonImage;
     public Button PriorityButton;
     public TextMeshProUGUI PriorityButtonText;
-    private void Start()
+
+    public void OTEEnnemiesOneAction()
     {
-        GiveTokens(0);
+        handManager.Hands[2].actionTokenNumber = 1;
+        handManager.Hands[3].actionTokenNumber = 1;
     }
 
     public void GiveTokens(int playerIndex)

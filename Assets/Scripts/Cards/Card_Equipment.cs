@@ -73,6 +73,7 @@ public class Card_Equipment : Card
         if (currentHoveredBoardSlot != -1 && boardSlotsManager.boardSlot[currentHoveredBoardSlot] != null)
         {
             boardSlotsManager.boardSlot[currentHoveredBoardSlot].GetComponent<Card_Unit>().ChangeStat(attack, defense);
+            tutorialManager.tutorialPlaying = false;
             base.CardUsed();
             Destroy(this.gameObject);
         }
@@ -95,10 +96,11 @@ public class Card_Equipment : Card
 
     #region IA Action
 
-
-    public override void IAPlay(int targetIndex)
+    bool tuto;
+    public override void IAPlay(int targetIndex, bool nextTuto)
     {
-        base.IAPlay(targetIndex);
+        tuto = nextTuto;
+        base.IAPlay(targetIndex, nextTuto);
         if (boardSlotsManager.boardSlot[targetIndex] != null)
         {
             IAtargetIndex = targetIndex;
@@ -117,7 +119,8 @@ public class Card_Equipment : Card
         base.CardUsed();
         boardSlotsManager.boardSlot[IAtargetIndex].GetComponent<Card_Unit>().ChangeStat(attack, defense);
         tutorialManager.tutorialIndex++;
-        tutorialManager.tutorialPlaying = false;
+        if(!tuto)
+            tutorialManager.tutorialPlaying = false;
         Destroy(this.gameObject);
     }
 

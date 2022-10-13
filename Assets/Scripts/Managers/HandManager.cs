@@ -22,9 +22,9 @@ public class HandManager : MonoBehaviour
     public enum teamNum { T1, T2 }
     public PriorityHandler priorityHandler;
     public TutorialManager tutorialManager;
-    public void PlayCard(int cardIndex, int targetIndex)
+    public void PlayCard(int cardIndex, int targetIndex, bool nextTuto)
     {
-        Hands[priorityHandler.currentPriority].cardList[cardIndex].IAPlay(targetIndex);
+        Hands[priorityHandler.currentPriority].cardList[cardIndex].IAPlay(targetIndex, nextTuto);
     }
 
 }
