@@ -56,9 +56,10 @@ public class Card : MonoBehaviour
         cardNameComp.text = cardName;
         //cardEffectComp.text = effectText;
         classNameComp.text = className;
-/*        switch (level)
+        switch (level)
         {
             case 0:
+                starComp.enabled = false;
                 break;
             case 1:
                 starComp.sprite = star1;
@@ -72,7 +73,7 @@ public class Card : MonoBehaviour
             default:
                 Debug.LogError("WrongLevel");
                 break;
-        }*/
+        }
     }
 
     public virtual void OnMouseEnterEvent()

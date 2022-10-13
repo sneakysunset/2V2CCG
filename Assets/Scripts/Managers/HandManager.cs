@@ -9,7 +9,6 @@ public class Hand
     public List<bool> occupied;
 
     public int actionTokenNumber = 0;
-    public int attackTokenNumber = 0;
 
 
     public HandManager.playerNum pNum;

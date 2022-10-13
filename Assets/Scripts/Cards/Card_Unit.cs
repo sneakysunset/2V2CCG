@@ -71,8 +71,9 @@ public class Card_Unit : Card
             handManager.Hands[playerIndex].occupied[handSlotIndex] = false;
             handSlotIndex = -1;
             boardSlotsManager.boardSlot[currentHoveredBoardSlot] = this;
+            priorityHandler.PlayerActionFinished(handManager.Hands[0].actionTokenNumber);
             handManager.Hands[0].actionTokenNumber -= 1;
-            //priorityHandler.currentPriority += 1;
+            priorityHandler.currentPriority += 1;
             StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, currentBoardSlot.position, anchoringAnimCurve, transform, .1f));
         }
         else if (currentBoardSlot != null && boardSlotsManager.boardSlot[currentHoveredBoardSlot] != null)
@@ -83,7 +84,7 @@ public class Card_Unit : Card
             boardSlotsManager.boardSlot[currentHoveredBoardSlot] = this;
             priorityHandler.PlayerActionFinished(handManager.Hands[0].actionTokenNumber);
             handManager.Hands[0].actionTokenNumber -= 1;
-            //priorityHandler.currentPriority += 1;
+            priorityHandler.currentPriority += 1;
 
             StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, currentBoardSlot.position, anchoringAnimCurve, transform, .1f));
         }

@@ -25,33 +25,25 @@ public class PriorityHandler : MonoBehaviour
             case 0:
                 ActivateTokens(TokenJ1T1, TokenJ2T1);
                 handManager.Hands[0].actionTokenNumber = 2;
-                handManager.Hands[0].attackTokenNumber = 0;
-                handManager.Hands[1].actionTokenNumber = 1;
-                handManager.Hands[1].attackTokenNumber = 1;
+                handManager.Hands[1].actionTokenNumber = 2;
                 currentPriority = 0;
                 break;
             case 1:
                 ActivateTokens(TokenJ2T1, TokenJ1T1);
                 handManager.Hands[1].actionTokenNumber = 2;
-                handManager.Hands[1].attackTokenNumber = 0;
-                handManager.Hands[0].actionTokenNumber = 1;
-                handManager.Hands[0].attackTokenNumber = 1;
+                handManager.Hands[0].actionTokenNumber = 2;
                 currentPriority = 1;
                 break;
             case 2:
                 ActivateTokens(TokenJ1T2, TokenJ2T2);
                 handManager.Hands[2].actionTokenNumber = 2;
-                handManager.Hands[2].attackTokenNumber = 0;
-                handManager.Hands[3].actionTokenNumber = 1;
-                handManager.Hands[3].attackTokenNumber = 1;
+                handManager.Hands[3].actionTokenNumber = 2;
                 currentPriority = 2;
                 break;
             case 3:
                 ActivateTokens(TokenJ2T2, TokenJ1T2);
                 handManager.Hands[3].actionTokenNumber = 2;
-                handManager.Hands[3].attackTokenNumber = 0;
-                handManager.Hands[2].actionTokenNumber = 1;
-                handManager.Hands[2].attackTokenNumber = 1;
+                handManager.Hands[2].actionTokenNumber = 2;
                 currentPriority = 3;
                 break;
             default:
@@ -61,7 +53,7 @@ public class PriorityHandler : MonoBehaviour
 
     public void SkipTurn()
     {
-        if (handManager.Hands[1].actionTokenNumber == 0 && handManager.Hands[1].attackTokenNumber == 0)
+        if (handManager.Hands[1].actionTokenNumber == 0)
         {
             currentPriority += 2;
         }
@@ -71,26 +63,36 @@ public class PriorityHandler : MonoBehaviour
         }
     }
 
+    void SkipAllyTurn()
+    {
+        currentPriority = 0;
+    }
+
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            SkipAllyTurn();
+        }
+
         if (currentPriority != 0)
         {
             PriorityButton.interactable = false;
             //PriorityButtonImage.color = grey
             if (currentPriority == 1)
             {
-                PriorityButtonText.text = "Ally is playing";
+                PriorityButtonText.text = "Ally Turn";
             }
             else if (currentPriority > 1)
             {
-                PriorityButtonText.text = "Ennemy is playing";
+                PriorityButtonText.text = "Ennemy Turn";
             }
         }
         else
         {
             PriorityButton.interactable = true;
-            if (handManager.Hands[1].actionTokenNumber == 0 && handManager.Hands[1].attackTokenNumber == 0)
+            if (handManager.Hands[1].actionTokenNumber == 0)
             {
                 PriorityButtonText.text = "End turn";
             }
@@ -103,6 +105,7 @@ public class PriorityHandler : MonoBehaviour
 
     public void PlayerActionFinished(int actionIndex)
     {
+        print(1);
         if(actionIndex == 2)
         {
            TokenJ1T1.transform.Find("TokenSlot2/ActionToken").gameObject.SetActive(false);
@@ -116,24 +119,16 @@ public class PriorityHandler : MonoBehaviour
     void DisableTokens()
     {
         TokenJ1T1.transform.Find("TokenSlot1/ActionToken").gameObject.SetActive(false);
-        TokenJ1T1.transform.Find("TokenSlot1/AttackToken").gameObject.SetActive(false);
         TokenJ1T1.transform.Find("TokenSlot2/ActionToken").gameObject.SetActive(false);
-        TokenJ1T1.transform.Find("TokenSlot2/AttackToken").gameObject.SetActive(false);
 
         TokenJ2T1.transform.Find("TokenSlot1/ActionToken").gameObject.SetActive(false);
-        TokenJ2T1.transform.Find("TokenSlot1/AttackToken").gameObject.SetActive(false);
         TokenJ2T1.transform.Find("TokenSlot2/ActionToken").gameObject.SetActive(false);
-        TokenJ2T1.transform.Find("TokenSlot2/AttackToken").gameObject.SetActive(false);
 
         TokenJ1T2.transform.Find("TokenSlot1/ActionToken").gameObject.SetActive(false);
-        TokenJ1T2.transform.Find("TokenSlot1/AttackToken").gameObject.SetActive(false);
         TokenJ1T2.transform.Find("TokenSlot2/ActionToken").gameObject.SetActive(false);
-        TokenJ1T2.transform.Find("TokenSlot2/AttackToken").gameObject.SetActive(false);
 
         TokenJ2T2.transform.Find("TokenSlot1/ActionToken").gameObject.SetActive(false);
-        TokenJ2T2.transform.Find("TokenSlot1/AttackToken").gameObject.SetActive(false);
         TokenJ2T2.transform.Find("TokenSlot2/ActionToken").gameObject.SetActive(false);
-        TokenJ2T2.transform.Find("TokenSlot2/AttackToken").gameObject.SetActive(false);
     }
 
     void ActivateTokens(GameObject actionJ, GameObject attackJ)
@@ -144,7 +139,7 @@ public class PriorityHandler : MonoBehaviour
         actionJ.transform.Find("TokenSlot2/ActionToken").gameObject.SetActive(true);
 
         attackJ.transform.Find("TokenSlot1/ActionToken").gameObject.SetActive(true);
-        attackJ.transform.Find("TokenSlot2/AttackToken").gameObject.SetActive(true);
+        attackJ.transform.Find("TokenSlot2/ActionToken").gameObject.SetActive(true);
     }
 
 }
