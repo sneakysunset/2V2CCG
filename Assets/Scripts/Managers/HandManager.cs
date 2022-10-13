@@ -7,7 +7,7 @@ public class Hand
 {
     public List<Transform> handSlots;
     public List<bool> occupied;
-
+    /*[HideInInspector]*/ public Card[] cardList = new Card[5];
     public int actionTokenNumber = 0;
 
 
@@ -20,5 +20,11 @@ public class HandManager : MonoBehaviour
     public Hand[] Hands = new Hand[4];
     public enum playerNum { J1, J2 };
     public enum teamNum { T1, T2 }
+    public PriorityHandler priorityHandler;
+    public TutorialManager tutorialManager;
+    public void PlayCard(int cardIndex, int targetIndex)
+    {
+        Hands[priorityHandler.currentPriority].cardList[cardIndex].IAPlay(targetIndex);
+    }
 
 }

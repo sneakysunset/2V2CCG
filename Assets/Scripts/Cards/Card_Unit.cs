@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public class Card_Unit : Card
 {
+    #region variables
     public Card currentEquipment;
     public TextMesh attackTextComp, defenseTextComp;
     public Transform currentBoardSlot;
@@ -12,14 +13,21 @@ public class Card_Unit : Card
     BoardSlotsManager boardSlotsManager;
     public int attack = 1;
     public int defense = 1;
+    int IAtargetIndex;
+    [HideInInspector]public UnityEvent endCoroutineEffect;
+    #endregion
+
 
     public override void Start()
     {
+        this.endCoroutineEffect.AddListener(() => this.EndCoroutineEffect());
         boardSlotsManager = FindObjectOfType<BoardSlotsManager>();
         base.Start();
         attackTextComp.text = "" + attack;
         defenseTextComp.text = "" + defense;
     }
+
+    #region PlayerActions
 
     public void OnMouseEnter()
     {
@@ -40,17 +48,26 @@ public class Card_Unit : Card
             {
                 RaycastHit2D rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition), Mathf.Infinity, LayerMask.GetMask("Slot"));
 
-                if (rayHit && currentHoveredBoardSlot != -1 /*&& boardSlotsManager.boardSlot[currentHoveredBoardSlot] == null*/)
+                if (rayHit)
                 {
                     string[] collName = rayHit.transform.name.Split(" : ");
-                    bool condition = collName[1] == "BoardSlot" && collName[2] == teamNum.ToString() && (collName[3] == playerNum.ToString() || collName[3] == "J");
-                    if (condition)
+                    currentHoveredBoardSlot = int.Parse(collName[0]);
+                    if(boardSlotsManager.boardSlot[currentHoveredBoardSlot] == null)
                     {
-                        transform.position = rayHit.transform.position;
-                        return;
+                        bool condition = collName[1] == "BoardSlot" && collName[2] == teamNum.ToString() && (collName[3] == playerNum.ToString() || collName[3] == "J");
+                        if (condition)
+                        {
+
+                            transform.position = rayHit.transform.position;
+                            return;
+                        }
                     }
                 }
-                
+                else
+                {
+                    currentHoveredBoardSlot = -1;
+                    currentBoardSlot = null;
+                }
                 base.OnMouseDragEvent();
             }
         }
@@ -66,27 +83,16 @@ public class Card_Unit : Card
 
     void DropCard()
     {
-        if (currentBoardSlot != null && boardSlotsManager.boardSlot[currentHoveredBoardSlot] == null)
+        if (currentHoveredBoardSlot != -1 && boardSlotsManager.boardSlot[currentHoveredBoardSlot] == null)
         {
-            handManager.Hands[playerIndex].occupied[handSlotIndex] = false;
-            handSlotIndex = -1;
             boardSlotsManager.boardSlot[currentHoveredBoardSlot] = this;
-            priorityHandler.PlayerActionFinished(handManager.Hands[0].actionTokenNumber);
-            handManager.Hands[0].actionTokenNumber -= 1;
-            priorityHandler.currentPriority += 1;
-            StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, currentBoardSlot.position, anchoringAnimCurve, transform, .1f));
+            base.CardUsed();
         }
-        else if (currentBoardSlot != null && boardSlotsManager.boardSlot[currentHoveredBoardSlot] != null)
+        else if (currentHoveredBoardSlot != -1 && boardSlotsManager.boardSlot[currentHoveredBoardSlot] != null)
         {
             Destroy(boardSlotsManager.boardSlot[currentHoveredBoardSlot].gameObject);
-            handManager.Hands[playerIndex].occupied[handSlotIndex] = false;
-            handSlotIndex = -1;
             boardSlotsManager.boardSlot[currentHoveredBoardSlot] = this;
-            priorityHandler.PlayerActionFinished(handManager.Hands[0].actionTokenNumber);
-            handManager.Hands[0].actionTokenNumber -= 1;
-            priorityHandler.currentPriority += 1;
-
-            StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, currentBoardSlot.position, anchoringAnimCurve, transform, .1f));
+            base.CardUsed();
         }
         else
         {
@@ -104,32 +110,34 @@ public class Card_Unit : Card
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    #endregion
+
+    #region IA Actions
+
+    public override void IAPlay(int targetIndex)
     {
-        string[] collName = collision.name.Split(" : ");
-        bool condition = collName[1] == "BoardSlot" && collName[2] == teamNum.ToString() && (collName[3] == playerNum.ToString() || collName[3] == "J");
-        //print(collName[0] + " " + collName[1] + " " + collName[2] + " " + collName[3] + "  Enter");
-        //print(condition);
-
-
-        if (condition)
+        base.IAPlay(targetIndex);
+        IAtargetIndex = targetIndex;
+        if(priorityHandler.currentPriority > 1)
         {
-            currentHoveredBoardSlot = int.Parse(collName[0]);
-            //if (boardSlotsManager.boardSlot[currentHoveredBoardSlot] == null)
-                currentBoardSlot = collision.transform;
+            cardBack.SetActive(false);
+            cardFrontComp.SetActive(true);
+            cardFaceRevealed = true;
         }
+        StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, boardSlotsManager.boardSlotTransform[targetIndex].position, anchoringAnimCurve, transform, .3f, endCoroutineEffect));
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    void EndCoroutineEffect()
     {
-        string[] collName = collision.name.Split(" : ");
-        bool condition = collName[1] == "BoardSlot" && collName[2] == teamNum.ToString() && (collName[3] == playerNum.ToString() || collName[3] == "J");
-        //print(collName[0] + " " + collName[1] + " " + collName[2] + " " + collName[3] + "  Exit");
+        if (boardSlotsManager.boardSlot[IAtargetIndex] != null) 
+            Destroy(boardSlotsManager.boardSlot[IAtargetIndex].gameObject);
+        boardSlotsManager.boardSlot[IAtargetIndex] = this;
+        base.CardUsed();
+        tutorialManager.tutorialIndex++;
+        tutorialManager.tutorialPlaying = false;
 
-        if (condition)
-        {
-            currentHoveredBoardSlot = -1;
-            currentBoardSlot = null;
-        }
     }
+
+    #endregion
+
 }

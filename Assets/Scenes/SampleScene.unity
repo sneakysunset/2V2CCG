@@ -1091,7 +1091,7 @@ GameObject:
   - component: {fileID: 317132022}
   - component: {fileID: 317132021}
   m_Layer: 6
-  m_Name: '1 : BoardSlot : T2 : J'
+  m_Name: '4 : BoardSlot : T2 : J'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3265,7 +3265,7 @@ GameObject:
   - component: {fileID: 1016043956}
   - component: {fileID: 1016043957}
   m_Layer: 0
-  m_Name: TutorialManager
+  m_Name: TutorialManager1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3293,7 +3293,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016043955}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39de973fb5dac414984f992b404653ef, type: 3}
   m_Name: 
@@ -3301,6 +3301,163 @@ MonoBehaviour:
   cardDrawer: {fileID: 2041700794}
   deckManager: {fileID: 2041700795}
   handManager: {fileID: 1832284477}
+  priorityHandler: {fileID: 41890779}
+  tutorialEvents:
+  - tutorialCall:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2041700794}
+          m_TargetAssemblyTypeName: CardDraw, Assembly-CSharp
+          m_MethodName: DrawCard
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    handSlotTargetOrDrawPlayerIndex: 1
+    slotTargetOrDrawNumber: 2
+  - tutorialCall:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1832284477}
+          m_TargetAssemblyTypeName: HandManager, Assembly-CSharp
+          m_MethodName: PlayCard
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    handSlotTargetOrDrawPlayerIndex: 0
+    slotTargetOrDrawNumber: 2
+  - tutorialCall:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1832284477}
+          m_TargetAssemblyTypeName: HandManager, Assembly-CSharp
+          m_MethodName: PlayCard
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    handSlotTargetOrDrawPlayerIndex: 1
+    slotTargetOrDrawNumber: 2
+  - tutorialCall:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2041700794}
+          m_TargetAssemblyTypeName: CardDraw, Assembly-CSharp
+          m_MethodName: DrawCard
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    handSlotTargetOrDrawPlayerIndex: 2
+    slotTargetOrDrawNumber: 2
+  - tutorialCall:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2041700794}
+          m_TargetAssemblyTypeName: CardDraw, Assembly-CSharp
+          m_MethodName: DrawCard
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    handSlotTargetOrDrawPlayerIndex: 3
+    slotTargetOrDrawNumber: 2
+  - tutorialCall:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1832284477}
+          m_TargetAssemblyTypeName: HandManager, Assembly-CSharp
+          m_MethodName: PlayCard
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    handSlotTargetOrDrawPlayerIndex: 0
+    slotTargetOrDrawNumber: 4
+  - tutorialCall:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1832284477}
+          m_TargetAssemblyTypeName: HandManager, Assembly-CSharp
+          m_MethodName: PlayCard
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    handSlotTargetOrDrawPlayerIndex: 0
+    slotTargetOrDrawNumber: 5
+  - tutorialCall:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1832284477}
+          m_TargetAssemblyTypeName: HandManager, Assembly-CSharp
+          m_MethodName: PlayCard
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    handSlotTargetOrDrawPlayerIndex: 1
+    slotTargetOrDrawNumber: 4
+  - tutorialCall:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1832284477}
+          m_TargetAssemblyTypeName: HandManager, Assembly-CSharp
+          m_MethodName: PlayCard
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    handSlotTargetOrDrawPlayerIndex: 1
+    slotTargetOrDrawNumber: 4
+  tutorialIndex: 0
+  tutorialPlaying: 0
 --- !u!1 &1029514474
 GameObject:
   m_ObjectHideFlags: 0
@@ -3964,7 +4121,7 @@ GameObject:
   - component: {fileID: 1240989590}
   - component: {fileID: 1240989589}
   m_Layer: 6
-  m_Name: '2 : BoardSlot : T2 : J2'
+  m_Name: '5 : BoardSlot : T2 : J2'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4518,7 +4675,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1360221166}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2097465844}
+        m_TargetAssemblyTypeName: ReloadScene, Assembly-CSharp
+        m_MethodName: ReloadSceneMethod
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1360221166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5065,6 +5234,16 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  boardSlotTransform:
+  - {fileID: 1992382139}
+  - {fileID: 509811236}
+  - {fileID: 124214583}
+  - {fileID: 1736898356}
+  - {fileID: 317132019}
+  - {fileID: 1240989587}
 --- !u!1 &1530982261
 GameObject:
   m_ObjectHideFlags: 0
@@ -5500,7 +5679,7 @@ GameObject:
   - component: {fileID: 1736898359}
   - component: {fileID: 1736898358}
   m_Layer: 6
-  m_Name: '0 : BoardSlot : T2 : J1'
+  m_Name: '3 : BoardSlot : T2 : J1'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5839,6 +6018,12 @@ MonoBehaviour:
     - {fileID: 149121827}
     - {fileID: 1029514475}
     occupied: 0000000000
+    cardList:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     actionTokenNumber: 0
     pNum: 0
     tNum: 0
@@ -5849,6 +6034,12 @@ MonoBehaviour:
     - {fileID: 1284577284}
     - {fileID: 1601056849}
     occupied: 0000000000
+    cardList:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     actionTokenNumber: 0
     pNum: 1
     tNum: 0
@@ -5859,6 +6050,12 @@ MonoBehaviour:
     - {fileID: 222040509}
     - {fileID: 1838465391}
     occupied: 0000000000
+    cardList:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     actionTokenNumber: 0
     pNum: 0
     tNum: 1
@@ -5869,9 +6066,17 @@ MonoBehaviour:
     - {fileID: 109164548}
     - {fileID: 1597948651}
     occupied: 0000000000
+    cardList:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     actionTokenNumber: 0
     pNum: 1
     tNum: 1
+  priorityHandler: {fileID: 41890779}
+  tutorialManager: {fileID: 1016043957}
 --- !u!4 &1832284478
 Transform:
   m_ObjectHideFlags: 0
@@ -6354,6 +6559,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckManager: {fileID: 2041700795}
   handManager: {fileID: 1832284477}
+  priorityHandler: {fileID: 41890779}
+  tutorialManager: {fileID: 1016043957}
+  cardAnimEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2041700795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6380,8 +6590,8 @@ MonoBehaviour:
     - {fileID: 1813571983806959022, guid: 65702c4619d55a94c91f0a6541a8a429, type: 3}
     deckTransform: {fileID: 471749190}
   - deck:
-    - {fileID: 1813571983806959022, guid: 65702c4619d55a94c91f0a6541a8a429, type: 3}
-    - {fileID: 1813571983806959022, guid: 65702c4619d55a94c91f0a6541a8a429, type: 3}
+    - {fileID: 1813571983806959022, guid: c1448c14c9fad1849b1ba6687220df37, type: 3}
+    - {fileID: 7696779372575705391, guid: a342082c29a580e47981d078c1cb04ff, type: 3}
     - {fileID: 1813571983806959022, guid: 65702c4619d55a94c91f0a6541a8a429, type: 3}
     - {fileID: 1813571983806959022, guid: 65702c4619d55a94c91f0a6541a8a429, type: 3}
     - {fileID: 1813571983806959022, guid: 65702c4619d55a94c91f0a6541a8a429, type: 3}
@@ -6475,6 +6685,7 @@ GameObject:
   - component: {fileID: 2097465842}
   - component: {fileID: 2097465841}
   - component: {fileID: 2097465840}
+  - component: {fileID: 2097465844}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6566,6 +6777,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2097465844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097465839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfb7bc248d9692742827c7e320f50ff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2112284230
 GameObject:
   m_ObjectHideFlags: 0

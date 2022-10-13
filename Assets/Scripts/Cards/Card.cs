@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
-
+using UnityEngine.Events;
 
 public class Card : MonoBehaviour
 {
+    #region variables
     public GameObject cardBack;
     protected CardManager cardManager;
     protected PriorityHandler priorityHandler;
+    protected TutorialManager tutorialManager;
     public int playerIndex;
     public HandManager.playerNum playerNum;
     public HandManager.teamNum teamNum;
@@ -38,6 +40,8 @@ public class Card : MonoBehaviour
     protected Vector3 hoveredStartScale, hoveredEndScale;
     protected Vector3  hoveredEndPos;
     protected IEnumerator scalerEnum, posEnum, hoveringEnum;
+    //UnityEvent tutorialChecker;
+    #endregion
 
     public virtual void Start()
     {
@@ -52,9 +56,11 @@ public class Card : MonoBehaviour
         handManager = FindObjectOfType<HandManager>();
         cardManager = FindObjectOfType<CardManager>();
         priorityHandler = FindObjectOfType<PriorityHandler>();
-        StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, AnchoringPosition, anchoringAnimCurve, transform, 1));
+        tutorialManager = FindObjectOfType<TutorialManager>();
+        //tutorialChecker.AddListener(() => TutorialValidation());
+
+        
         cardNameComp.text = cardName;
-        //cardEffectComp.text = effectText;
         classNameComp.text = className;
         switch (level)
         {
@@ -76,6 +82,18 @@ public class Card : MonoBehaviour
         }
     }
 
+
+    public virtual void CardUsed()
+    {
+        handManager.Hands[playerIndex].occupied[handSlotIndex] = false;
+        priorityHandler.ActionFinished(handManager.Hands[playerIndex].actionTokenNumber);
+        handManager.Hands[playerIndex].actionTokenNumber -= 1;
+        handManager.Hands[playerIndex].cardList[handSlotIndex] = null;
+        handSlotIndex = -1;
+    }
+
+    #region PlayerCards
+
     public virtual void OnMouseEnterEvent()
     {
         
@@ -91,7 +109,6 @@ public class Card : MonoBehaviour
             StartCoroutine(posEnum);
         }
     }
-
 
     public virtual void OnMouseExitEvent()
     {
@@ -116,5 +133,15 @@ public class Card : MonoBehaviour
         pos.z = 0;
         transform.position = pos;
     }
-    
+    #endregion
+
+
+    #region IA Actions
+
+    public virtual void IAPlay(int targetIndex)
+    {
+
+    }
+
+    #endregion
 }
