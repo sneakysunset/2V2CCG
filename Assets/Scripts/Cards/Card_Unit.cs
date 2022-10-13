@@ -80,6 +80,7 @@ public class Card_Unit : Card
     public GameObject arrowPointer;
     Transform arrowHeadPos;
     LineRenderer arrowLineRenderer;
+
     private void OnMouseDown()
     {
         if (handSlotIndex == -1 && priorityHandler.currentPriority == 0)
@@ -95,6 +96,12 @@ public class Card_Unit : Card
         if (arrowHeadPos != null)
         {
             attackArrowPointer();
+        }
+
+        if(defense <= 0)
+        {
+
+            Destroy(this.gameObject);
         }
     }
 
@@ -132,6 +139,8 @@ public class Card_Unit : Card
         }
        
     }
+
+
 
     public void ChangeStat(int attackChange, int defenseChange)
     {
