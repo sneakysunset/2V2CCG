@@ -10,6 +10,9 @@ public class Hand
     /*[HideInInspector]*/ public Card[] cardList = new Card[5];
     public int actionTokenNumber = 0;
 
+    public int dwarfLvlIndex;
+    public int elfLvlIndex;
+    public int demonLvlIndex;
 
     public HandManager.playerNum pNum;
     public HandManager.teamNum tNum;
@@ -22,9 +25,9 @@ public class HandManager : MonoBehaviour
     public enum teamNum { T1, T2 }
     public PriorityHandler priorityHandler;
     public TutorialManager tutorialManager;
-    public void PlayCard(int cardIndex, int targetIndex, bool nextTuto)
+    public void PlayCard(int cardIndex, int targetIndex, bool nextTuto, float timerd)
     {
-        Hands[priorityHandler.currentPriority].cardList[cardIndex].IAPlay(targetIndex, nextTuto);
+        Hands[priorityHandler.currentPriority].cardList[cardIndex].IAPlay(targetIndex, nextTuto, timerd);
     }
 
 }

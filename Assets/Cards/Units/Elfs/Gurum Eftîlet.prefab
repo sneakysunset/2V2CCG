@@ -612,6 +612,39 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   arrowPointer: {fileID: 9205533881798335585, guid: c7cca51dd9aace641a708d84dd6e8d4d, type: 3}
+  attackAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.405889
+      outSlope: 1.405889
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5008591
+      value: 0.7041523
+      inSlope: -0.0044908524
+      outSlope: -0.0044908524
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.00354
+      value: -0.0070762634
+      inSlope: -1.4148707
+      outSlope: -1.4148707
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!61 &1813571983806958673
 BoxCollider2D:
   m_ObjectHideFlags: 0

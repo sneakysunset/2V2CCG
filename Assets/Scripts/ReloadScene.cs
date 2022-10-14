@@ -10,29 +10,37 @@ public class ReloadScene : MonoBehaviour
     public TextMeshProUGUI TutoTextLeft, TutoTextRight;
     public TutorialManager tutorialManager;
     bool tuto;
+    float timer;
+    
     public void ReloadSceneMethod()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void TutorialWindowRight(int textIndex, int proxyIndex, bool nextTuto)
+    public void TutorialWindowRight(int textIndex, int proxyIndex, bool nextTuto, float timerd)
     {
         TutoPageRight.SetActive(true);
         TutoTextRight.text = TutoTexts[textIndex];
         tuto = nextTuto;
+        timer = timerd;
     }
 
-    public void TutorialWindowLeft(int textIndex, int proxyIndex, bool nextTuto)
+    public void TutorialWindowLeft(int textIndex, int proxyIndex, bool nextTuto, float timerd)
     {
         TutoPageLeft.SetActive(true);
         TutoTextLeft.text = TutoTexts[textIndex];
         tuto = nextTuto;
+        timer = timerd;
     }
 
     public void SkipWindow()
     {
         tutorialManager.tutorialIndex++;
+        tutorialManager.timer = timer;
         if(!tuto)
             tutorialManager.tutorialPlaying = false;
+        else tutorialManager.canPlay = true;
     }
+
+
 }

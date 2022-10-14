@@ -39,7 +39,7 @@ public class Card_Equipment : Card
 
     public void OnMouseDrag()
     {
-        if (teamNum == HandManager.teamNum.T1 && playerNum == HandManager.playerNum.J1 && handManager.Hands[0].actionTokenNumber > 0 && priorityHandler.currentPriority == 0)
+        if (teamNum == HandManager.teamNum.T1 && playerNum == HandManager.playerNum.J1 && handManager.Hands[0].actionTokenNumber > 0 && priorityHandler.currentPriority == 0 && tutorialManager.canPlay && !tutorialManager.pause && lvlCondition >= level)
         {
             if (handSlotIndex != -1)
             {
@@ -97,10 +97,12 @@ public class Card_Equipment : Card
     #region IA Action
 
     bool tuto;
-    public override void IAPlay(int targetIndex, bool nextTuto)
+    float timer;
+    public override void IAPlay(int targetIndex, bool nextTuto, float timerd)
     {
         tuto = nextTuto;
-        base.IAPlay(targetIndex, nextTuto);
+        timer = timerd;
+        base.IAPlay(targetIndex, nextTuto, timerd);
         if (boardSlotsManager.boardSlot[targetIndex] != null)
         {
             IAtargetIndex = targetIndex;
@@ -119,8 +121,10 @@ public class Card_Equipment : Card
         base.CardUsed();
         boardSlotsManager.boardSlot[IAtargetIndex].GetComponent<Card_Unit>().ChangeStat(attack, defense);
         tutorialManager.tutorialIndex++;
+        tutorialManager.timer = timer;
         if(!tuto)
             tutorialManager.tutorialPlaying = false;
+        else tutorialManager.canPlay = true;
         Destroy(this.gameObject);
     }
 

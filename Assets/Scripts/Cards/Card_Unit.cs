@@ -6,7 +6,6 @@ using UnityEngine.Events;
 public class Card_Unit : Card
 {
     #region variables
-    public Card currentEquipment;
     public TextMesh attackTextComp, defenseTextComp;
     public Transform currentBoardSlot;
     int currentHoveredBoardSlot;
@@ -42,7 +41,7 @@ public class Card_Unit : Card
 
     public void OnMouseDrag()
     {
-        if (teamNum == HandManager.teamNum.T1 && playerNum == HandManager.playerNum.J1 && handManager.Hands[0].actionTokenNumber > 0 && priorityHandler.currentPriority == 0)
+        if (teamNum == HandManager.teamNum.T1 && playerNum == HandManager.playerNum.J1 && handManager.Hands[0].actionTokenNumber > 0 && priorityHandler.currentPriority == 0 && tutorialManager.canPlay && !tutorialManager.pause && lvlCondition >= level)
         {
             if (handSlotIndex != -1)
             {
@@ -83,7 +82,7 @@ public class Card_Unit : Card
 
     private void OnMouseDown()
     {
-        if (handSlotIndex == -1 && priorityHandler.currentPriority == 0)
+        if (handSlotIndex == -1 && priorityHandler.currentPriority == 0 && tutorialManager.canPlay && !tutorialManager.pause && lvlCondition >= level)
         {
             arrowHeadPos = Instantiate(arrowPointer).transform;
             arrowLineRenderer = arrowHeadPos.GetComponent<LineRenderer>();
@@ -100,11 +99,14 @@ public class Card_Unit : Card
 
         if(defense <= 0)
         {
-
+            boardSlotsManager.boardSlot[currentHoveredBoardSlot] = null;
             Destroy(this.gameObject);
         }
     }
 
+    Card_Unit attackTarget;
+    Transform attackTargetTransform;
+    int colliName;
     void attackArrowPointer()
     {
         arrowLineRenderer.SetPosition(1, arrowHeadPos.position);
@@ -114,7 +116,9 @@ public class Card_Unit : Card
         if (rayHit)
         {
             string[] collName = rayHit.transform.name.Split(" : ");
+            colliName = int.Parse(collName[0]);
             //currentHoveredBoardSlot = int.Parse(collName[0]);
+
        
             bool condition = collName[1] == "BoardSlot" && collName[2] != teamNum.ToString();
             if (condition)
@@ -122,7 +126,14 @@ public class Card_Unit : Card
                 arrowHeadPos.position = rayHit.transform.position;
                 if (Input.GetMouseButtonUp(0))
                 {
-                    print("attack");
+                    bool target = false;
+                    if (boardSlotsManager.boardSlot[colliName] != null)
+                    {
+                        attackTarget = boardSlotsManager.boardSlot[colliName].GetComponent<Card_Unit>();
+                        target = true;
+                    }
+                    attackTargetTransform = boardSlotsManager.boardSlotTransform[colliName];
+                    Attack(target);
                 }
                 return;
             }
@@ -139,8 +150,29 @@ public class Card_Unit : Card
         }
        
     }
+    public AnimationCurve attackAnimationCurve;
+    void Attack(bool target)
+    {
+        Destroy(arrowHeadPos.gameObject);
+        StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, boardSlotsManager.boardSlotTransform[colliName].position, attackAnimationCurve, transform, .3f));
 
+        if (target)
+        {
+            attackTarget.ChangeStat(0, -attack);
+        }
+        else
+        {
+            if (teamNum == HandManager.teamNum.T1)
+                boardSlotsManager.AttackNexus(attack, false);
+            else
+                boardSlotsManager.AttackNexus(attack, true);
 
+        }
+
+        tutorialManager.tutorialPlaying = false;
+        priorityHandler.ActionFinished(handManager.Hands[playerIndex].actionTokenNumber);
+        handManager.Hands[playerIndex].actionTokenNumber -= 1;
+    }
 
     public void ChangeStat(int attackChange, int defenseChange)
     {
@@ -186,10 +218,11 @@ public class Card_Unit : Card
 
     #region IA Actions
     bool tuto;
-    public override void IAPlay(int targetIndex, bool nextTuto)
+    float timer;
+    public override void IAPlay(int targetIndex, bool nextTuto, float timerd)
     {
         tuto = nextTuto;
-        base.IAPlay(targetIndex, nextTuto);
+        timer = timerd;
         IAtargetIndex = targetIndex;
         if(priorityHandler.currentPriority > 1)
         {
@@ -198,6 +231,38 @@ public class Card_Unit : Card
             cardFaceRevealed = true;
         }
         StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, boardSlotsManager.boardSlotTransform[targetIndex].position, anchoringAnimCurve, transform, .3f, endCoroutineEffect));
+    }
+
+    public override void IAAttack(int targetIndex, bool nextTuto, float timerd)
+    {
+        bool target = false;
+        if(boardSlotsManager.boardSlot[targetIndex] != null)
+        {
+            attackTarget = boardSlotsManager.boardSlot[targetIndex].GetComponent<Card_Unit>();
+            target = true;
+        }
+        StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, boardSlotsManager.boardSlotTransform[targetIndex].position, attackAnimationCurve, transform, .3f));
+
+        if (target)
+        {
+            attackTarget.ChangeStat(0, -attack);
+        }
+        else
+        {
+            if (teamNum == HandManager.teamNum.T1)
+                boardSlotsManager.AttackNexus(attack, false);
+            else
+                boardSlotsManager.AttackNexus(attack, true);
+
+        }
+
+        priorityHandler.ActionFinished(handManager.Hands[playerIndex].actionTokenNumber);
+        handManager.Hands[playerIndex].actionTokenNumber -= 1;
+        tutorialManager.tutorialIndex++;
+        tutorialManager.timer = timer;
+        if (!nextTuto)
+            tutorialManager.tutorialPlaying = false;
+        else tutorialManager.canPlay = true;
     }
 
     void EndCoroutineEffect()
@@ -209,6 +274,7 @@ public class Card_Unit : Card
         tutorialManager.tutorialIndex++;
         if(!tuto)
             tutorialManager.tutorialPlaying = false;
+        else tutorialManager.canPlay = true;
 
     }
 

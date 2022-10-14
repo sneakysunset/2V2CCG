@@ -40,6 +40,7 @@ public class Card : MonoBehaviour
     protected Vector3 hoveredStartScale, hoveredEndScale;
     protected Vector3  hoveredEndPos;
     protected IEnumerator scalerEnum, posEnum, hoveringEnum;
+    protected int lvlCondition;
     //UnityEvent tutorialChecker;
     #endregion
 
@@ -85,6 +86,24 @@ public class Card : MonoBehaviour
 
     public virtual void CardUsed()
     {
+        switch (className)
+        {
+            case "Dwarf":
+                handManager.Hands[priorityHandler.currentPriority].dwarfLvlIndex++;
+                lvlCondition = handManager.Hands[priorityHandler.currentPriority].dwarfLvlIndex;
+                break;
+            case "Elf":
+                handManager.Hands[priorityHandler.currentPriority].elfLvlIndex++;
+                lvlCondition = handManager.Hands[priorityHandler.currentPriority].elfLvlIndex;
+                break;
+            case "Demon":
+                handManager.Hands[priorityHandler.currentPriority].demonLvlIndex++;
+                lvlCondition = handManager.Hands[priorityHandler.currentPriority].demonLvlIndex;
+                break;
+            default:
+                Debug.LogError("Wrong Class Name");
+                return;
+        }
         handManager.Hands[playerIndex].occupied[handSlotIndex] = false;
         priorityHandler.ActionFinished(handManager.Hands[playerIndex].actionTokenNumber);
         handManager.Hands[playerIndex].actionTokenNumber -= 1;
@@ -92,21 +111,24 @@ public class Card : MonoBehaviour
         handSlotIndex = -1;
     }
 
+
     #region PlayerCards
 
     public virtual void OnMouseEnterEvent()
     {
-        
-        if(scalerEnum != null) StopCoroutine(scalerEnum);
-        scalerEnum = MoveAnimations.LerpToScaling(transform.localScale, hoveredEndScale, anchoringAnimCurve, transform, .2f);
-        StartCoroutine(scalerEnum);
-        GetComponent<SortingGroup>().sortingOrder += 1;
-
-        if (!dragged && handSlotIndex != -1)
+        if (!tutorialManager.pause)
         {
-            if (posEnum != null) StopCoroutine(posEnum);
-            posEnum = MoveAnimations.LerpToAnchor(transform.position, hoveredEndPos, anchoringAnimCurve, transform, .2f);
-            StartCoroutine(posEnum);
+            if(scalerEnum != null) StopCoroutine(scalerEnum);
+            scalerEnum = MoveAnimations.LerpToScaling(transform.localScale, hoveredEndScale, anchoringAnimCurve, transform, .2f);
+            StartCoroutine(scalerEnum);
+            GetComponent<SortingGroup>().sortingOrder += 1;
+
+            if (!dragged && handSlotIndex != -1)
+            {
+                if (posEnum != null) StopCoroutine(posEnum);
+                posEnum = MoveAnimations.LerpToAnchor(transform.position, hoveredEndPos, anchoringAnimCurve, transform, .2f);
+                StartCoroutine(posEnum);
+            }
         }
     }
 
@@ -138,10 +160,16 @@ public class Card : MonoBehaviour
 
     #region IA Actions
 
-    public virtual void IAPlay(int targetIndex, bool nextTuto)
+    public virtual void IAPlay(int targetIndex, bool nextTuto, float timerd)
     {
 
     }
+
+    public virtual void IAAttack(int targetIndex, bool nextTuto, float timerd)
+    {
+
+    }
+
 
     #endregion
 }

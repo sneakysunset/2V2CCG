@@ -12,7 +12,7 @@ TagManager:
   - Water
   - UI
   - Slot
-  - 
+  - Nexus
   - 
   - 
   - 
@@ -49,4 +49,7 @@ TagManager:
     locked: 0
   - name: TextLayer
     uniqueID: 3854464593
+    locked: 0
+  - name: Effect
+    uniqueID: 1733113429
     locked: 0

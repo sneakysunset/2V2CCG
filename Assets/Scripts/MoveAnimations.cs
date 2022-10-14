@@ -13,7 +13,9 @@ public static class MoveAnimations
             ItemToMove.position = Vector3.Lerp(startPos, endPos, animCurve.Evaluate(i));
             yield return null;
         }
-        ItemToMove.position = endPos;
+        //ItemToMove.position = endPos;
+        i = 1;
+        ItemToMove.position = Vector3.Lerp(startPos, endPos, animCurve.Evaluate(i));
         endOfAnimEvent?.Invoke();
         yield return null;
     }

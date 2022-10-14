@@ -13,15 +13,17 @@ public class CardDraw : MonoBehaviour
     int i;
     int playerIndexProxy, drawNumberProxy;
     bool nextTutoProxy;
+    float timerProxy;
     private void Awake()
     {
         this.cardAnimEnd.AddListener(() => this.CardAnimEnd());
     }
-    public void DrawCard(int playerIndex, int drawNumber, bool nextTuto)
+    public void DrawCard(int playerIndex, int drawNumber, bool nextTuto, float timerd)
     {
         playerIndexProxy = playerIndex;
         drawNumberProxy = drawNumber;
         nextTutoProxy = nextTuto;
+        timerProxy = timerd;
 
         Vector3 handSlotTarget = Vector3.zero;
         int handSlotIndex = 0;
@@ -65,7 +67,7 @@ public class CardDraw : MonoBehaviour
         i++;
         if (i < drawNumberProxy)
         {
-            DrawCard(playerIndexProxy, drawNumberProxy, nextTutoProxy);
+            DrawCard(playerIndexProxy, drawNumberProxy, nextTutoProxy, timerProxy);
         }
         else
         {
@@ -74,9 +76,12 @@ public class CardDraw : MonoBehaviour
             i = 0;
 
            tutorialManager.tutorialIndex++;
-            if(!nextTutoProxy)
+            tutorialManager.timer = timerProxy;
+            if (!nextTutoProxy)
                 tutorialManager.tutorialPlaying = false;
+            else tutorialManager.canPlay = true;
 
+            timerProxy = 0;
             nextTutoProxy = false;
         }
     }
@@ -85,22 +90,22 @@ public class CardDraw : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            DrawCard(0, 1, true);
+            DrawCard(0, 1, true, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            DrawCard(1, 1, true);
+            DrawCard(1, 1, true, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
-            DrawCard(2, 1, true);
+            DrawCard(2, 1, true, 0);
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            DrawCard(3, 1, true);
+            DrawCard(3, 1, true, 0);
         }
     }
 }

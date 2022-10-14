@@ -7,9 +7,10 @@ using UnityEngine.Events;
 public struct unityEvent
 {
     public string TutorialStep;
-    public UnityEvent<int, int, bool> tutorialCall;
+    public UnityEvent<int, int, bool, float> tutorialCall;
     public int handSlotTargetOrDrawPlayerIndex;
     public int slotTargetOrDrawNumber;
+    public float timerd;
     public bool nextTuto;
 }
 
@@ -22,26 +23,36 @@ public class TutorialManager : MonoBehaviour
     public List<unityEvent> tutorialEvents;
     public int tutorialIndex;
     public bool tutorialPlaying;
-
-
+    public bool canPlay;
+    public float timer;
+    public bool pause;
 
     private void Update()
     {
         if(!tutorialPlaying /*&& priorityHandler.currentPriority != 0*/)
         {
             tutorialPlaying = true;
-            StartCoroutine(SimpleTimer());
+            canPlay = false;
+            StartCoroutine(SimpleTimer(timer));
         }
     }
 
-    IEnumerator SimpleTimer()
+
+
+    IEnumerator SimpleTimer(float timer)
     {
-        yield return new WaitForSeconds(1);
-        tutorialEvents[tutorialIndex].tutorialCall.Invoke(tutorialEvents[tutorialIndex].handSlotTargetOrDrawPlayerIndex, tutorialEvents[tutorialIndex].slotTargetOrDrawNumber, tutorialEvents[tutorialIndex].nextTuto);
+        yield return new WaitUntil(()=> !pause);
+        yield return new WaitForSeconds(timer);
+        tutorialEvents[tutorialIndex].tutorialCall.Invoke(tutorialEvents[tutorialIndex].handSlotTargetOrDrawPlayerIndex, tutorialEvents[tutorialIndex].slotTargetOrDrawNumber, tutorialEvents[tutorialIndex].nextTuto, tutorialEvents[tutorialIndex].timerd);
     }
 
     public void TutoTrigger()
     {
         tutorialPlaying = false;
+    }
+
+    public void PauseGame(bool boolean)
+    {
+        pause = boolean;
     }
 }

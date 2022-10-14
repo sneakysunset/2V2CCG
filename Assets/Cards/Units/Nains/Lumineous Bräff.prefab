@@ -558,7 +558,7 @@ MonoBehaviour:
   teamNum: 0
   positionningSpeed: 0.3
   hoveringSpeed: 0.5
-  level: 0
+  level: 1
   cardName: "Br\xE4ff"
   className: Dwarf
   cardImage: {fileID: 21300000, guid: 7de0631af290ae545b6fcbaffa7eff82, type: 3}
@@ -602,16 +602,48 @@ MonoBehaviour:
   dragged: 0
   handSlotIndex: 0
   hoveredScalingMult: 1.5
-  currentEquipment: {fileID: 0}
   attackTextComp: {fileID: 1000105244407519406}
   defenseTextComp: {fileID: 1059636796536140571}
   currentBoardSlot: {fileID: 0}
-  attack: 1
-  defense: 2
+  attack: 5
+  defense: 5
   endCoroutineEffect:
     m_PersistentCalls:
       m_Calls: []
   arrowPointer: {fileID: 9205533881798335585, guid: c7cca51dd9aace641a708d84dd6e8d4d, type: 3}
+  attackAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.405889
+      outSlope: 1.405889
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5008591
+      value: 0.7041523
+      inSlope: -0.0044908524
+      outSlope: -0.0044908524
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.00354
+      value: -0.0070762634
+      inSlope: -1.4148707
+      outSlope: -1.4148707
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!61 &1813571983806958673
 BoxCollider2D:
   m_ObjectHideFlags: 0
