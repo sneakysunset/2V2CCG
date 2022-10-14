@@ -188,12 +188,18 @@ public class Card_Unit : Card
         {
             boardSlotsManager.boardSlot[currentHoveredBoardSlot] = this;
             tutorialManager.tutorialPlaying = false;
+            hoveredStartScale.x = 1.5f;
+            hoveredStartScale.y = 1.5f;
+             MoveAnimations.LerpToScaling(transform.localScale, hoveredStartScale, anchoringAnimCurve, transform, .2f);
             base.CardUsed();
         }
         else if (currentHoveredBoardSlot != -1 && boardSlotsManager.boardSlot[currentHoveredBoardSlot] != null)
         {
             Destroy(boardSlotsManager.boardSlot[currentHoveredBoardSlot].gameObject);
             boardSlotsManager.boardSlot[currentHoveredBoardSlot] = this;
+            hoveredStartScale.x = 1.5f;
+            hoveredStartScale.y = 1.5f;
+            MoveAnimations.LerpToScaling(transform.localScale, hoveredStartScale, anchoringAnimCurve, transform, .2f);
             tutorialManager.tutorialPlaying = false;
 
             base.CardUsed();
@@ -230,6 +236,7 @@ public class Card_Unit : Card
             cardFrontComp.SetActive(true);
             cardFaceRevealed = true;
         }
+
         StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, boardSlotsManager.boardSlotTransform[targetIndex].position, anchoringAnimCurve, transform, .3f, endCoroutineEffect));
     }
 
@@ -269,6 +276,10 @@ public class Card_Unit : Card
     {
         if (boardSlotsManager.boardSlot[IAtargetIndex] != null) 
             Destroy(boardSlotsManager.boardSlot[IAtargetIndex].gameObject);
+
+        hoveredStartScale.x = 1.5f;
+        hoveredStartScale.y = 1.5f;
+        StartCoroutine(MoveAnimations.LerpToScaling(transform.localScale, hoveredStartScale, anchoringAnimCurve, transform, .2f));
         boardSlotsManager.boardSlot[IAtargetIndex] = this;
         base.CardUsed();
         tutorialManager.tutorialIndex++;

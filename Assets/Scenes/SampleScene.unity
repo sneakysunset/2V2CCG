@@ -416,7 +416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &124214583
 Transform:
   m_ObjectHideFlags: 0
@@ -719,7 +719,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 41fda5058a8bb3240967eafe24647037, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1096,7 +1096,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &317132019
 Transform:
   m_ObjectHideFlags: 0
@@ -1628,7 +1628,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 41fda5058a8bb3240967eafe24647037, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1774,7 +1774,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &509811236
 Transform:
   m_ObjectHideFlags: 0
@@ -1925,7 +1925,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 0}
+  m_BackGroundColor: {r: 1, g: 0.7028302, b: 0.8521154, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2112,7 +2112,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 41fda5058a8bb3240967eafe24647037, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4377,6 +4377,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 124214582}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
     handSlotTargetOrDrawPlayerIndex: 2
     slotTargetOrDrawNumber: 0
     timerd: 1
@@ -5112,7 +5124,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 41fda5058a8bb3240967eafe24647037, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5303,7 +5315,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 41fda5058a8bb3240967eafe24647037, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7042,7 +7054,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 41fda5058a8bb3240967eafe24647037, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7524,7 +7536,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 41fda5058a8bb3240967eafe24647037, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7913,7 +7925,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 41fda5058a8bb3240967eafe24647037, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7969,6 +7981,9 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     actionTokenNumber: 1
+    dwarfLvlIndex: 0
+    elfLvlIndex: 0
+    demonLvlIndex: 0
     pNum: 0
     tNum: 0
   - handSlots:
@@ -7985,6 +8000,9 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     actionTokenNumber: 1
+    dwarfLvlIndex: 0
+    elfLvlIndex: 0
+    demonLvlIndex: 0
     pNum: 1
     tNum: 0
   - handSlots:
@@ -8001,6 +8019,9 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     actionTokenNumber: 0
+    dwarfLvlIndex: 0
+    elfLvlIndex: 0
+    demonLvlIndex: 0
     pNum: 0
     tNum: 1
   - handSlots:
@@ -8017,6 +8038,9 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     actionTokenNumber: 0
+    dwarfLvlIndex: 0
+    elfLvlIndex: 0
+    demonLvlIndex: 0
     pNum: 1
     tNum: 1
   priorityHandler: {fileID: 41890779}
@@ -8821,8 +8845,8 @@ MonoBehaviour:
   decks:
   - deck:
     - {fileID: 1813571983806959022, guid: 51f81369bc9bda84bbe80a6421ca3113, type: 3}
-    - {fileID: 3950496573977129547, guid: 1cc019b706fbff946a49d40dc7301278, type: 3}
     - {fileID: 7696779372575705391, guid: f2242f4efba48b64f91116dddf0052a5, type: 3}
+    - {fileID: 3950496573977129547, guid: 1cc019b706fbff946a49d40dc7301278, type: 3}
     - {fileID: 7696779372575705391, guid: 8e358fb871053344f92aac595705c119, type: 3}
     - {fileID: 7696779372575705391, guid: c25cd7a19a85bca4b978b456c30e2a44, type: 3}
     - {fileID: 1813571983806959022, guid: 22dd8882ed8ceca42a3db314c5a1d0e6, type: 3}
@@ -9055,6 +9079,25 @@ MonoBehaviour:
   - "Tiens, une carte \xE9quipement ! Tu peux jouer les cartes \xE9quipements sur
     les serviteurs que tu as jou\xE9s. Cet \xE9quipement conf\xE8re 4 d\u2019attaque
     suppl\xE9mentaire, utilise-le pour booster ton serviteur !"
+  - "Comme tu peux le constater tu peux voir la main de ton co\xE9quipier, n'h\xE9sitez
+    pas \xE0 coop\xE9rer histoire de faire avancer les choses plus rapidement !"
+  - "Il a pioch\xE9 au d\xE9but du tour une carte \xE9quipement \xE9galement, il
+    peut booster les points de vie de son Elf ! Et oui l\u2019\xE9quipement peut
+    influer sur l\u2019attaque ou les points de vie des serviteurs ! Plut\xF4t cool
+    non ?"
+  - "Ok, c\u2019est ta deuxi\xE8me action ! Passons \xE0 l\u2019offensive un peu,
+    utilise ton serviteur fraichement \xE9quip\xE9 pour attaquer le serviteur d'en
+    face!"
+  - "Comme tu peux le voir, les deux serviteurs prennent les d\xE9g\xE2ts de l\u2019autre.
+    Ici, ils s\u2019auto-d\xE9truisent donc ! Ne t\u2019inqui\xE8te pas ! T\u2019en
+    auras d\u2019autre l\u2019ami !"
+  - "Ton alli\xE9 attaque \xE9galement lors de sa deuxi\xE8me action avec son serviteur
+    ! Le sien avait l\u2019air plus r\xE9siliant que le tiens ! Il survit ! La 4/4
+    adverse est d\xE9truite, et ton alli\xE9 garde son serviteur malgr\xE9 les 2
+    points de vie en moins ! C\u2019est d\xE9j\xE0 \xE7a..."
+  - "Tiens, une carte \xE9quipement ! Tu peux jouer les cartes \xE9quipements sur
+    les serviteurs que tu as jou\xE9s. Cet \xE9quipement conf\xE8re 4 d\u2019attaque
+    suppl\xE9mentaire, utilise-le pour booster ton serviteur !"
   TutoPageLeft: {fileID: 1711302639}
   TutoPageRight: {fileID: 747067682}
   TutoTextLeft: {fileID: 418048524}
@@ -9164,8 +9207,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
-  m_Sprite: {fileID: 21300000, guid: 47bcee3882429544d91b7a87c89706d7, type: 3}
+  m_SortingOrder: -4
+  m_Sprite: {fileID: 21300000, guid: 404de3466e80e334c9ff6a95382d7086, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

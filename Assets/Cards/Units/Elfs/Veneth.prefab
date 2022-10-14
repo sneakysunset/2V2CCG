@@ -532,7 +532,7 @@ Transform:
   m_GameObject: {fileID: 1813571983806959020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2044775106925131026}
@@ -602,7 +602,6 @@ MonoBehaviour:
   dragged: 0
   handSlotIndex: 0
   hoveredScalingMult: 1.5
-  currentEquipment: {fileID: 0}
   attackTextComp: {fileID: 1000105244407519406}
   defenseTextComp: {fileID: 1059636796536140571}
   currentBoardSlot: {fileID: 0}
