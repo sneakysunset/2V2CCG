@@ -25,6 +25,11 @@ public class Card_Equipment : Card
         defenseTextComp.text = "+" + defense;
     }
 
+    private void Update()
+    {
+        base.UpdateLevelindex();
+    }
+
     #region PlayerAction
     public void OnMouseEnter()
     {

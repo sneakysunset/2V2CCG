@@ -11,11 +11,16 @@ public class PriorityHandler : MonoBehaviour
     public Image PriorityButtonImage;
     public Button PriorityButton;
     public TextMeshProUGUI PriorityButtonText;
-
+    public TutorialManager tutorialManager;
     public void OTEEnnemiesOneAction()
     {
         handManager.Hands[2].actionTokenNumber = 1;
         handManager.Hands[3].actionTokenNumber = 1;
+    }
+
+    public void changePrio(int changeNum)
+    {
+        currentPriority += changeNum;
     }
 
     public void GiveTokens(int playerIndex)
@@ -221,7 +226,9 @@ public class PriorityHandler : MonoBehaviour
             }
             else
             {
+                tutorialManager.tutorialIndex++;
                 currentPriority += 1; // Skip J1T1 || J1T2
+                tutorialManager.tutorialPlaying = false;
             }
         }
         else

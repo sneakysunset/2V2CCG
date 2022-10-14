@@ -76,7 +76,7 @@ public class CardDraw : MonoBehaviour
             i = 0;
 
            tutorialManager.tutorialIndex++;
-            tutorialManager.timer = timerProxy;
+           tutorialManager.timer = timerProxy;
             if (!nextTutoProxy)
                 tutorialManager.tutorialPlaying = false;
             else tutorialManager.canPlay = true;

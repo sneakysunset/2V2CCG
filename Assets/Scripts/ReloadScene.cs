@@ -9,8 +9,8 @@ public class ReloadScene : MonoBehaviour
     public GameObject TutoPageLeft, TutoPageRight;
     public TextMeshProUGUI TutoTextLeft, TutoTextRight;
     public TutorialManager tutorialManager;
-    bool tuto;
-    float timer;
+    [HideInInspector] public bool tuto;
+    [HideInInspector] public float timer;
     
     public void ReloadSceneMethod()
     {

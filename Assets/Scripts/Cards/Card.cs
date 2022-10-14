@@ -20,7 +20,7 @@ public class Card : MonoBehaviour
 
     public int level;
     public string cardName, className;
-    public Sprite  cardImage, cardOverlay, star1, star2, star3;
+    public Sprite  cardImage, cardOverlay, star1;
     public AnimationCurve anchoringAnimCurve;
     public float hoveredPositionHeight;
 
@@ -29,27 +29,46 @@ public class Card : MonoBehaviour
     public bool cardFaceRevealed;
     public TextMesh cardNameComp;
     public TextMesh classNameComp;
-    public SpriteRenderer cardImageComp, cardOverlayComp, starComp;
+    public SpriteRenderer cardImageComp, cardOverlayComp;
+    public SpriteRenderer[] stars = new SpriteRenderer[0];
 
     [HideInInspector] public Vector3 AnchoringPosition;
     [HideInInspector] public bool dragged;
-    [HideInInspector] public int handSlotIndex;
+    /*[HideInInspector]*/ public int handSlotIndex;
     protected HandManager handManager;
 
     public float hoveredScalingMult = 1.5f;
     protected Vector3 hoveredStartScale, hoveredEndScale;
     protected Vector3  hoveredEndPos;
     protected IEnumerator scalerEnum, posEnum, hoveringEnum;
-    protected int lvlCondition;
+    public int lvlCondition;
     //UnityEvent tutorialChecker;
     #endregion
+    int playerIndexer;
 
     public virtual void Start()
     {
-        if(teamNum == HandManager.teamNum.T2)
+        if (teamNum == HandManager.teamNum.T1 && playerNum == HandManager.playerNum.J1)
+            playerIndexer = 0;
+        if (teamNum == HandManager.teamNum.T1 && playerNum == HandManager.playerNum.J2)
+            playerIndexer = 1;
+        if (teamNum == HandManager.teamNum.T2 && playerNum == HandManager.playerNum.J1)
+            playerIndexer = 2;
+        if (teamNum == HandManager.teamNum.T2 && playerNum == HandManager.playerNum.J2)
+            playerIndexer = 3;
+
+        if (teamNum == HandManager.teamNum.T2)
         {
             hoveredPositionHeight = -hoveredPositionHeight;
         }
+
+        
+
+        foreach(SpriteRenderer sprite in stars)
+        {
+            sprite.color = Color.grey;
+        }
+
         hoveredStartScale = transform.localScale;
         hoveredEndScale = transform.localScale * hoveredScalingMult;
         hoveredEndPos = AnchoringPosition;
@@ -60,22 +79,41 @@ public class Card : MonoBehaviour
         tutorialManager = FindObjectOfType<TutorialManager>();
         //tutorialChecker.AddListener(() => TutorialValidation());
 
-        
+        switch (className)
+        {
+            case "Dwarf":
+                lvlCondition = handManager.Hands[priorityHandler.currentPriority].dwarfLvlIndex;
+                break;
+            case "Elf":
+                lvlCondition = handManager.Hands[priorityHandler.currentPriority].elfLvlIndex;
+                break;
+            case "Demon":
+                lvlCondition = handManager.Hands[priorityHandler.currentPriority].demonLvlIndex;
+                break;
+            default:
+                Debug.LogError("Wrong Class Name");
+                return;
+        }
+
+
         cardNameComp.text = cardName;
         classNameComp.text = className;
         switch (level)
         {
             case 0:
-                starComp.enabled = false;
+                //starComp1.enabled = false;
                 break;
             case 1:
-                starComp.sprite = star1;
+                stars[0].enabled = true;
                 break;
             case 2:
-                starComp.sprite = star2;
+                stars[3].enabled = true;
+                stars[4].enabled = true;
                 break;
             case 3:
-                starComp.sprite = star3;
+                stars[0].enabled = true;
+                stars[1].enabled = true;
+                stars[2].enabled = true;
                 break;
             default:
                 Debug.LogError("WrongLevel");
@@ -84,6 +122,54 @@ public class Card : MonoBehaviour
     }
 
 
+
+    void ColorChange(Color col, int currentLevelIndex)
+    {
+        if(currentLevelIndex == 1)
+        {
+            stars[0].color = col;
+            stars[3].color = col;
+        }
+        else if(currentLevelIndex == 2)
+        {
+            stars[3].color = col;
+            stars[4].color = col;
+            stars[0].color = col;
+            stars[1].color = col;
+        }
+        else if(currentLevelIndex == 3)
+        {
+            stars[0].color = col;
+            stars[1].color = col;
+            stars[2].color = col;
+        }
+    }
+
+   public void UpdateLevelindex()
+    {
+
+        switch (className)
+        {
+            case "Dwarf":
+                lvlCondition = handManager.Hands[playerIndexer].dwarfLvlIndex;
+                ColorChange(cardManager.dwarfColor, lvlCondition);
+
+                break;
+            case "Elf":
+                lvlCondition = handManager.Hands[playerIndexer].elfLvlIndex;
+                ColorChange(cardManager.elfColor, lvlCondition);
+                break;
+            case "Demon":
+                lvlCondition = handManager.Hands[playerIndexer].demonLvlIndex;
+                ColorChange(cardManager.demonColor, lvlCondition);
+
+                break;
+            default:
+                Debug.LogError("Wrong Class Name");
+                return;
+        }
+    }
+
     public virtual void CardUsed()
     {
         switch (className)
@@ -91,14 +177,19 @@ public class Card : MonoBehaviour
             case "Dwarf":
                 handManager.Hands[priorityHandler.currentPriority].dwarfLvlIndex++;
                 lvlCondition = handManager.Hands[priorityHandler.currentPriority].dwarfLvlIndex;
+                ColorChange(cardManager.dwarfColor, lvlCondition);
+
                 break;
             case "Elf":
                 handManager.Hands[priorityHandler.currentPriority].elfLvlIndex++;
                 lvlCondition = handManager.Hands[priorityHandler.currentPriority].elfLvlIndex;
+                ColorChange(cardManager.elfColor, lvlCondition);
                 break;
             case "Demon":
                 handManager.Hands[priorityHandler.currentPriority].demonLvlIndex++;
                 lvlCondition = handManager.Hands[priorityHandler.currentPriority].demonLvlIndex;
+                ColorChange(cardManager.demonColor, lvlCondition);
+
                 break;
             default:
                 Debug.LogError("Wrong Class Name");

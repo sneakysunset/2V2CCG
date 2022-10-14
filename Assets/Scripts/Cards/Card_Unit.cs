@@ -8,15 +8,25 @@ public class Card_Unit : Card
     #region variables
     public TextMesh attackTextComp, defenseTextComp;
     public Transform currentBoardSlot;
-    int currentHoveredBoardSlot;
+    public int currentHoveredBoardSlot;
     BoardSlotsManager boardSlotsManager;
     public int attack = 1;
     public int defense = 1;
     int IAtargetIndex;
     [HideInInspector]public UnityEvent endCoroutineEffect;
+
+    [Space(10)]
+    [Header("AttackVariables")]
+    public GameObject arrowPointer;
+    Transform arrowHeadPos;
+    LineRenderer arrowLineRenderer;
+    Card_Unit attackTarget;
+    Transform attackTargetTransform;
+    int colliName;
+
     #endregion
 
-
+    #region Generic Functions
     public override void Start()
     {
         this.endCoroutineEffect.AddListener(() => this.EndCoroutineEffect());
@@ -25,9 +35,33 @@ public class Card_Unit : Card
         attackTextComp.text = "" + attack;
         defenseTextComp.text = "" + defense;
     }
+    private void Update()
+    {
+        base.UpdateLevelindex();
+
+        if (arrowHeadPos != null)
+        {
+            attackArrowPointer();
+        }
+
+        if(defense <= 0)
+        {
+            boardSlotsManager.boardSlot[currentHoveredBoardSlot] = null;
+            Destroy(this.gameObject);
+        }
+    }
+    public void ChangeStat(int attackChange, int defenseChange)
+    {
+        attack += attackChange;
+        defense += defenseChange;
+        attackTextComp.text = attack.ToString();
+        defenseTextComp.text = defense.ToString();
+    }
+    #endregion
 
     #region PlayerActions
 
+    #region play
     public void OnMouseEnter()
     {
         if(!cardManager.dragging)
@@ -75,113 +109,6 @@ public class Card_Unit : Card
             }
         }
     }
-
-    public GameObject arrowPointer;
-    Transform arrowHeadPos;
-    LineRenderer arrowLineRenderer;
-
-    private void OnMouseDown()
-    {
-        if (handSlotIndex == -1 && priorityHandler.currentPriority == 0 && tutorialManager.canPlay && !tutorialManager.pause && lvlCondition >= level)
-        {
-            arrowHeadPos = Instantiate(arrowPointer).transform;
-            arrowLineRenderer = arrowHeadPos.GetComponent<LineRenderer>();
-            arrowLineRenderer.SetPosition(0, transform.position);
-        }
-    }
-
-    private void Update()
-    {
-        if (arrowHeadPos != null)
-        {
-            attackArrowPointer();
-        }
-
-        if(defense <= 0)
-        {
-            boardSlotsManager.boardSlot[currentHoveredBoardSlot] = null;
-            Destroy(this.gameObject);
-        }
-    }
-
-    Card_Unit attackTarget;
-    Transform attackTargetTransform;
-    int colliName;
-    void attackArrowPointer()
-    {
-        arrowLineRenderer.SetPosition(1, arrowHeadPos.position);
-        arrowHeadPos.rotation = Quaternion.LookRotation(Vector3.forward, arrowHeadPos.position - transform.position);
-        RaycastHit2D rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition), Mathf.Infinity, LayerMask.GetMask("Slot"));
-       
-        if (rayHit)
-        {
-            string[] collName = rayHit.transform.name.Split(" : ");
-            colliName = int.Parse(collName[0]);
-            //currentHoveredBoardSlot = int.Parse(collName[0]);
-
-       
-            bool condition = collName[1] == "BoardSlot" && collName[2] != teamNum.ToString();
-            if (condition)
-            {
-                arrowHeadPos.position = rayHit.transform.position;
-                if (Input.GetMouseButtonUp(0))
-                {
-                    bool target = false;
-                    if (boardSlotsManager.boardSlot[colliName] != null)
-                    {
-                        attackTarget = boardSlotsManager.boardSlot[colliName].GetComponent<Card_Unit>();
-                        target = true;
-                    }
-                    attackTargetTransform = boardSlotsManager.boardSlotTransform[colliName];
-                    Attack(target);
-                }
-                return;
-            }
-       
-        }
-        var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        pos.z = 0;
-        arrowHeadPos.position = pos;
-       
-       
-        if (Input.GetMouseButtonUp(0))
-        {
-            Destroy(arrowHeadPos.gameObject);
-        }
-       
-    }
-    public AnimationCurve attackAnimationCurve;
-    void Attack(bool target)
-    {
-        Destroy(arrowHeadPos.gameObject);
-        StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, boardSlotsManager.boardSlotTransform[colliName].position, attackAnimationCurve, transform, .3f));
-
-        if (target)
-        {
-            attackTarget.ChangeStat(0, -attack);
-        }
-        else
-        {
-            if (teamNum == HandManager.teamNum.T1)
-                boardSlotsManager.AttackNexus(attack, false);
-            else
-                boardSlotsManager.AttackNexus(attack, true);
-
-        }
-
-        tutorialManager.tutorialPlaying = false;
-        priorityHandler.ActionFinished(handManager.Hands[playerIndex].actionTokenNumber);
-        handManager.Hands[playerIndex].actionTokenNumber -= 1;
-    }
-
-    public void ChangeStat(int attackChange, int defenseChange)
-    {
-        attack += attackChange;
-        defense += defenseChange;
-        attackTextComp.text = attack.ToString();
-        defenseTextComp.text = defense.ToString();
-    }
-
     void DropCard()
     {
         if (currentHoveredBoardSlot != -1 && boardSlotsManager.boardSlot[currentHoveredBoardSlot] == null)
@@ -211,7 +138,6 @@ public class Card_Unit : Card
         dragged = false;
         cardManager.dragging = false;
     }
-
     private void OnMouseUp()
     {
         if (dragged)
@@ -219,6 +145,127 @@ public class Card_Unit : Card
             DropCard();
         }
     }
+
+    #endregion
+
+
+    #region attack
+    public List<GameObject> highlights = new List<GameObject>();
+    private void OnMouseDown()
+    {
+        if (handSlotIndex == -1 && priorityHandler.currentPriority == 0 && tutorialManager.canPlay && !tutorialManager.pause && lvlCondition >= level && teamNum == HandManager.teamNum.T1)
+        {
+            arrowHeadPos = Instantiate(arrowPointer).transform;
+            arrowLineRenderer = arrowHeadPos.GetComponent<LineRenderer>();
+            arrowLineRenderer.SetPosition(0, transform.position);
+            
+            for (int i = 0; i < boardSlotsManager.boardSlot.Length; i++)
+            {
+                string[] intelliName = boardSlotsManager.boardSlotTransform[i].name.Split(" : ");
+
+                
+                if (intelliName[2] == "T2" && (boardSlotsManager.boardSlot[i] || currentHoveredBoardSlot + 3 == int.Parse(intelliName[0])))
+                {
+                    if (boardSlotsManager.boardSlot[i])
+                    {
+                        boardSlotsManager.boardSlotTransform[i].Find("HighLight").gameObject.SetActive(true);
+                        highlights.Add(boardSlotsManager.boardSlotTransform[i].Find("HighLight").gameObject);
+                    }
+                    else
+                    {
+                        boardSlotsManager.nexusHPT2.transform.Find("HighLight").gameObject.SetActive(true);
+                        highlights.Add(boardSlotsManager.nexusHPT2.transform.Find("HighLight").gameObject);
+                    }
+                }
+            }
+        }
+    }
+
+    void attackArrowPointer()
+    {
+        arrowLineRenderer.SetPosition(1, arrowHeadPos.position);
+        arrowHeadPos.rotation = Quaternion.LookRotation(Vector3.forward, arrowHeadPos.position - transform.position);
+        LayerMask layerMask = LayerMask.GetMask("Slot");
+        for (int i = 0; i < boardSlotsManager.boardSlot.Length; i++)
+        {
+            string[] intelliName = boardSlotsManager.boardSlotTransform[i].name.Split(" : ");
+
+            if (!boardSlotsManager.boardSlot[i] && currentHoveredBoardSlot + 3 == int.Parse(intelliName[0])) 
+                layerMask = LayerMask.GetMask("Slot") + LayerMask.GetMask("Nexus");
+        }
+        RaycastHit2D rayHit = Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.mousePosition), Mathf.Infinity, layerMask);
+        if (rayHit)
+        {
+            string[] collName = rayHit.transform.name.Split(" : ");
+            colliName = int.Parse(collName[0]);
+            bool condition = collName[1] == "BoardSlot" && collName[2] != teamNum.ToString();
+
+            if ((condition && boardSlotsManager.boardSlot[colliName] != null) || rayHit.transform.name == "10 : 2 : Ennemy Nexus")
+            {
+                arrowHeadPos.position = rayHit.transform.position;
+                if (Input.GetMouseButtonUp(0))
+                {
+                    bool target = false;
+                    if (rayHit.transform.name != "10 : 2 : Ennemy Nexus")
+                    {
+                        attackTarget = boardSlotsManager.boardSlot[colliName].GetComponent<Card_Unit>();
+                        target = true;
+                    }
+
+                    attackTargetTransform = rayHit.transform;
+                    Attack(target);
+                }
+                return;
+            }
+       
+        }
+        var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        pos.z = 0;
+        arrowHeadPos.position = pos;
+       
+       
+        if (Input.GetMouseButtonUp(0))
+        {
+            Destroy(arrowHeadPos.gameObject);
+            foreach (GameObject highlight in highlights)
+            {
+                highlight.SetActive(false);
+            }
+            highlights.Clear();
+        }
+       
+    }
+    public AnimationCurve attackAnimationCurve;
+    void Attack(bool target)
+    {
+        Destroy(arrowHeadPos.gameObject);
+        foreach(GameObject highlight in highlights)
+        {
+            highlight.SetActive(false);
+        }
+        highlights.Clear();
+        StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, attackTargetTransform.position, attackAnimationCurve, transform, .6f));
+
+        if (target)
+        {
+            attackTarget.ChangeStat(0, -attack);
+            ChangeStat(0, -attackTarget.attack);
+        }
+        else
+        {
+            if (teamNum == HandManager.teamNum.T1)
+                boardSlotsManager.AttackNexus(attack, false);
+            else
+                boardSlotsManager.AttackNexus(attack, true);
+
+        }
+
+        tutorialManager.tutorialPlaying = false;
+        priorityHandler.ActionFinished(handManager.Hands[playerIndex].actionTokenNumber);
+        handManager.Hands[playerIndex].actionTokenNumber -= 1;
+    }
+
+    #endregion
 
     #endregion
 
@@ -243,16 +290,26 @@ public class Card_Unit : Card
     public override void IAAttack(int targetIndex, bool nextTuto, float timerd)
     {
         bool target = false;
+        Vector3 targetCor = Vector3.zero ;
         if(boardSlotsManager.boardSlot[targetIndex] != null)
         {
+            targetCor = boardSlotsManager.boardSlotTransform[targetIndex].position;
             attackTarget = boardSlotsManager.boardSlot[targetIndex].GetComponent<Card_Unit>();
             target = true;
         }
-        StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, boardSlotsManager.boardSlotTransform[targetIndex].position, attackAnimationCurve, transform, .3f));
+        else
+        {
+            if (teamNum == HandManager.teamNum.T1)
+                targetCor = boardSlotsManager.nexusHPT2.transform.position;
+            else targetCor = boardSlotsManager.nexusHPT1.transform.position;
+        } 
+        StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, targetCor, attackAnimationCurve, transform, .6f));
 
         if (target)
         {
             attackTarget.ChangeStat(0, -attack);
+            ChangeStat(0, -attackTarget.attack);
+
         }
         else
         {

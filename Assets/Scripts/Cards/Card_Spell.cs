@@ -25,6 +25,7 @@ public class Card_Spell : Card
     Transform arrowHeadPos;
     LineRenderer arrowLineRenderer;
     Transform projectile;
+    List<GameObject> highlights = new List<GameObject>();
 
     private void OnMouseDown()
     {
@@ -33,6 +34,23 @@ public class Card_Spell : Card
             arrowHeadPos = Instantiate(arrowPointer).transform;
             arrowLineRenderer = arrowHeadPos.GetComponent<LineRenderer>();
             arrowLineRenderer.SetPosition(0, transform.position);
+
+            for (int i = 0; i < boardSlotsManager.boardSlot.Length; i++)
+            {
+                string[] intelliName = boardSlotsManager.boardSlotTransform[i].name.Split(" : ");
+
+
+                if (intelliName[2] == "T2" && boardSlotsManager.boardSlot[i])
+                {
+                    boardSlotsManager.boardSlotTransform[i].Find("HighLight").gameObject.SetActive(true);
+                    highlights.Add(boardSlotsManager.boardSlotTransform[i].Find("HighLight").gameObject);
+                    if (targetNexus)
+                    {
+                        boardSlotsManager.nexusHPT2.transform.Find("HighLight").gameObject.SetActive(true);
+                        highlights.Add(boardSlotsManager.nexusHPT2.transform.Find("HighLight").gameObject);
+                    }
+                }
+            }
         }
     }
 
@@ -47,8 +65,9 @@ public class Card_Spell : Card
     }
 
 
-    private void Update()
+    private void  Update()
     {
+        base.UpdateLevelindex();
         if (arrowHeadPos != null)
         {
             SpellArrowPointer();
@@ -101,6 +120,11 @@ public class Card_Spell : Card
 
         if (Input.GetMouseButtonUp(0))
         {
+            foreach (GameObject highlight in highlights)
+            {
+                highlight.SetActive(false);
+            }
+            highlights.Clear();
             Destroy(arrowHeadPos.gameObject);
         }
 
@@ -119,8 +143,12 @@ public class Card_Spell : Card
     void EndCoroutineEffect()
     {
         Destroy(projectile.gameObject);
-        
-        if(colliName == 10)
+        foreach (GameObject highlight in highlights)
+        {
+            highlight.SetActive(false);
+        }
+        highlights.Clear();
+        if (colliName == 10)
         {
             boardSlotsManager.AttackNexus(spellStrength, false);
         }

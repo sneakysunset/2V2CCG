@@ -12,6 +12,8 @@ public class BoardSlotsManager : MonoBehaviour
         boardSlot[cardIndex].IAAttack(targetIndex, nextTuto, timerd);
     }
 
+
+
     public void AttackNexus(int attack, bool targetT1)
     {
         if (targetT1)
