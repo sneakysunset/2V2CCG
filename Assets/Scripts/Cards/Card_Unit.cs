@@ -326,7 +326,11 @@ public class Card_Unit : Card
         tutorialManager.timer = timer;
         if (!nextTuto)
             tutorialManager.tutorialPlaying = false;
-        else tutorialManager.canPlay = true;
+        else
+        {
+            tutorialManager.canPlay = true;
+            tutorialManager.changeToolTip();
+        }
     }
 
     void EndCoroutineEffect()
@@ -340,9 +344,13 @@ public class Card_Unit : Card
         boardSlotsManager.boardSlot[IAtargetIndex] = this;
         base.CardUsed();
         tutorialManager.tutorialIndex++;
-        if(!tuto)
+        if (!tuto)
             tutorialManager.tutorialPlaying = false;
-        else tutorialManager.canPlay = true;
+        else
+        {
+            tutorialManager.canPlay = true;
+            tutorialManager.changeToolTip();
+        }
 
     }
 

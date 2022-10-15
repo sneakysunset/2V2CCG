@@ -22,13 +22,15 @@ public class TutorialManager : MonoBehaviour
     public BoardSlotsManager boardSlotsManager;
     public PriorityHandler priorityHandler;
     public ReloadScene canvasManager;
-    
+    public TextMesh toolTipText;
     public List<unityEvent> tutorialEvents;
     public int tutorialIndex;
     public bool tutorialPlaying;
     public bool canPlay;
     public float timer;
     public bool pause;
+    public int toolTipIndex = 0;
+
     private void Update()
     {
         if(!tutorialPlaying /*&& priorityHandler.currentPriority != 0*/)
@@ -37,6 +39,11 @@ public class TutorialManager : MonoBehaviour
             canPlay = false;
             StartCoroutine(SimpleTimer(timer));
         }
+/*
+        if(priorityHandler.currentPriority != 0)
+        {
+            toolTipText.text = "";
+        }*/
     }
 
     IEnumerator SimpleTimer(float timer)
@@ -92,5 +99,17 @@ public class TutorialManager : MonoBehaviour
         canvasManager.TutoTextLeft.text = canvasManager.TutoTexts[textIndex];
         canvasManager.tuto = nextTuto;
         canvasManager.timer = timerd;
+    }
+
+    public AnimationCurve animCurveToolTips;
+
+    public void changeToolTip()
+    {
+        var startPos = toolTipText.transform.parent.position;
+        var endPos = startPos;
+        endPos.y -= 1;
+        StartCoroutine(MoveAnimations.LerpToAnchor(startPos, endPos, animCurveToolTips, toolTipText.transform.parent, 1)) ;
+        toolTipText.text = canvasManager.ToolTipsTexts[toolTipIndex];
+        toolTipIndex++;
     }
 }

@@ -214,7 +214,11 @@ public class Card_Spell : Card
         tutorialManager.tutorialIndex++;
         if(!tuto)
             tutorialManager.tutorialPlaying = false;
-        else tutorialManager.canPlay = true;
+        else
+        {
+            tutorialManager.canPlay = true;
+            tutorialManager.changeToolTip();
+        }
         Destroy(this.gameObject);
 
     }

@@ -6,6 +6,7 @@ using TMPro;
 public class ReloadScene : MonoBehaviour
 {
     public List<string> TutoTexts;
+    public List<string> ToolTipsTexts;
     public GameObject TutoPageLeft, TutoPageRight;
     public TextMeshProUGUI TutoTextLeft, TutoTextRight;
     public TutorialManager tutorialManager;
@@ -39,7 +40,11 @@ public class ReloadScene : MonoBehaviour
         tutorialManager.timer = timer;
         if(!tuto)
             tutorialManager.tutorialPlaying = false;
-        else tutorialManager.canPlay = true;
+        else
+        {
+            tutorialManager.canPlay = true;
+            tutorialManager.changeToolTip();
+        }
     }
 
 
