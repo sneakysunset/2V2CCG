@@ -1061,8 +1061,8 @@ MonoBehaviour:
   attackTextComp: {fileID: 5218420238235238836}
   defenseTextComp: {fileID: 5421786292728556033}
   currentBoardSlot: {fileID: 0}
-  attack: 5
-  defense: 2
+  attack: 7
+  defense: 3
   endCoroutineEffect:
     m_PersistentCalls:
       m_Calls: []
