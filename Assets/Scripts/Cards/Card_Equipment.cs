@@ -77,7 +77,17 @@ public class Card_Equipment : Card
     {
         if (currentHoveredBoardSlot != -1 && boardSlotsManager.boardSlot[currentHoveredBoardSlot] != null)
         {
-            boardSlotsManager.boardSlot[currentHoveredBoardSlot].GetComponent<Card_Unit>().ChangeStat(attack, defense);
+            var targetUnit = boardSlotsManager.boardSlot[currentHoveredBoardSlot].GetComponent<Card_Unit>();
+            targetUnit.ChangeStat(attack, defense);
+
+            if(targetUnit.equipmentT1.text.Length < 3)
+            {
+                targetUnit.equipmentT1.text = "Equipment 1 : +" + attack + " +" + defense;
+            }
+            else
+            {
+                targetUnit.equipmentT2.text = "Equipment 1 : +" + attack + " +" + defense;
+            }
             tutorialManager.tutorialPlaying = false;
             base.CardUsed();
             Destroy(this.gameObject);
@@ -124,7 +134,17 @@ public class Card_Equipment : Card
     void EndCoroutineEffect()
     {
         base.CardUsed();
-        boardSlotsManager.boardSlot[IAtargetIndex].GetComponent<Card_Unit>().ChangeStat(attack, defense);
+        var targetUnit = boardSlotsManager.boardSlot[IAtargetIndex].GetComponent<Card_Unit>();
+
+        targetUnit.ChangeStat(attack, defense);
+        if (targetUnit.equipmentT1.text.Length < 3)
+        {
+            targetUnit.equipmentT1.text = "Equipment 1 : +" + attack + " +" + defense;
+        }
+        else
+        {
+            targetUnit.equipmentT2.text = "Equipment 1 : +" + attack + " +" + defense;
+        }
         tutorialManager.tutorialIndex++;
         tutorialManager.timer = timer;
         if(!tuto)

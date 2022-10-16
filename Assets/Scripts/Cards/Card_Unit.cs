@@ -23,13 +23,15 @@ public class Card_Unit : Card
     Card_Unit attackTarget;
     Transform attackTargetTransform;
     int colliName;
-
+    public TextMesh equipmentT1, equipmentT2;
+    [HideInInspector] public UnityEvent playerAttackAnimEndEvent;
     #endregion
 
     #region Generic Functions
     public override void Start()
     {
         this.endCoroutineEffect.AddListener(() => this.EndCoroutineEffect());
+        this.playerAttackAnimEndEvent.AddListener(() => this.PlayerAttackEndCoroutineMethode());
         boardSlotsManager = FindObjectOfType<BoardSlotsManager>();
         base.Start();
         classNameComp.text = cardName;
@@ -242,17 +244,22 @@ public class Card_Unit : Card
        
     }
     public AnimationCurve attackAnimationCurve;
+    bool targetter;
     void Attack(bool target)
     {
+        targetter = target;
         Destroy(arrowHeadPos.gameObject);
         foreach(GameObject highlight in highlights)
         {
             highlight.SetActive(false);
         }
         highlights.Clear();
-        StartCoroutine(MoveAnimations.AttackLerpToAnchor(transform.position, attackTargetTransform.position, attackAnimationCurve, transform, .6f));
+        StartCoroutine(MoveAnimations.AttackLerpToAnchor(transform.position, attackTargetTransform.position, attackAnimationCurve, transform, .6f, playerAttackAnimEndEvent));
+    }
 
-        if (target)
+    void PlayerAttackEndCoroutineMethode()
+    {
+        if (targetter)
         {
             attackTarget.ChangeStat(0, -attack);
             ChangeStat(0, -attackTarget.attack);
