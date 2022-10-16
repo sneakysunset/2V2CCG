@@ -1010,7 +1010,7 @@ MonoBehaviour:
   positionningSpeed: 0.3
   hoveringSpeed: 0.5
   level: 2
-  cardName: Death Plate
+  cardName: Darmor
   className: Demon
   cardImage: {fileID: 21300000, guid: 2463b41fa6121a4489f47c7ac5863c59, type: 3}
   cardOverlay: {fileID: 21300000, guid: 000e0aec952e2894289eb837eea08ca3, type: 3}
@@ -1172,10 +1172,12 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6674759030998450790}
-  m_Text: Nain
+  m_Text: 'Death
+
+    Plate'
   m_OffsetZ: 0
   m_CharacterSize: 1
-  m_LineSpacing: 1
+  m_LineSpacing: 0.79
   m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4

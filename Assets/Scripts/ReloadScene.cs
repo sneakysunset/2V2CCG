@@ -6,6 +6,7 @@ using TMPro;
 public class ReloadScene : MonoBehaviour
 {
     public List<string> TutoTexts;
+    [TextArea]
     public List<string> ToolTipsTexts;
     public GameObject TutoPageLeft, TutoPageRight;
     public TextMeshProUGUI TutoTextLeft, TutoTextRight;

@@ -31,9 +31,9 @@ public class Card_Spell : Card
     {
         if (handSlotIndex != -1 && priorityHandler.currentPriority == 0 && tutorialManager.canPlay && !tutorialManager.pause && lvlCondition >= level)
         {
-            arrowHeadPos = Instantiate(arrowPointer).transform;
+            arrowHeadPos = Instantiate(arrowPointer, transform).transform;
             arrowLineRenderer = arrowHeadPos.GetComponent<LineRenderer>();
-            arrowLineRenderer.SetPosition(0, transform.position);
+
 
             for (int i = 0; i < boardSlotsManager.boardSlot.Length; i++)
             {
@@ -80,6 +80,7 @@ public class Card_Spell : Card
 
     void SpellArrowPointer()
     {
+        arrowLineRenderer.SetPosition(0, transform.position);
         arrowLineRenderer.SetPosition(1, arrowHeadPos.position);
         arrowHeadPos.rotation = Quaternion.LookRotation(Vector3.forward, arrowHeadPos.position - transform.position);
         LayerMask layerMask = LayerMask.GetMask("Slot");

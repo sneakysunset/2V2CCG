@@ -510,7 +510,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124214582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.5, y: -1.25, z: 0}
+  m_LocalPosition: {x: 3.5, y: -1.25, z: 1}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1190,7 +1190,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317132018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.25, z: 0}
+  m_LocalPosition: {x: 0, y: 1.25, z: 1}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2080,7 +2080,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 509811235}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.25, z: 0}
+  m_LocalPosition: {x: 0, y: -1.25, z: 1}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5876,9 +5876,30 @@ MonoBehaviour:
   timer: 0
   pause: 0
   toolTipIndex: 0
+  toolTipAnimEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
   animCurveToolTips:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -7414,7 +7435,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240989586}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 1.25, z: 0}
+  m_LocalPosition: {x: 3.5, y: 1.25, z: 1}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7762,19 +7783,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1291013571}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 41890779}
-        m_TargetAssemblyTypeName: PriorityHandler, Assembly-CSharp
-        m_MethodName: SkipTurn
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1291013571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8534,7 +8543,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448547802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: -2.69, z: 0}
+  m_LocalPosition: {x: 1, y: -1.69, z: 0}
   m_LocalScale: {x: 0.24579573, y: 0.13185759, z: 0.13185759}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9634,7 +9643,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736898355}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 1.25, z: 0}
+  m_LocalPosition: {x: -3.5, y: 1.25, z: 1}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10708,7 +10717,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1992382138}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5, y: -1.25, z: 0}
+  m_LocalPosition: {x: -3.5, y: -1.25, z: 1}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11512,17 +11521,12 @@ MonoBehaviour:
     pas si tu les as vraiment m\xE9rit\xE9s mais j\u2019ai les poches trop pleines
     en ce moment..."
   ToolTipsTexts:
-  - 
-  - azeza
-  - zaezaezaeza
-  - zaeazezaezaeaze
-  - zaezaezaeazezaezaezae
-  - zaezaezaezaezaeaezaezaezae
-  - zaezaezaezaezaeaezaezaezae
-  - zaezaezaezaezaeaezaezaezae
-  - zaezaezaezaezaeaezaezaezae
-  - zaezaezaezaezaeaezaezaezae
-  - zaezaezaezaezaeaezaezaezae
+  - Drag and Drop Rognor onto the left board slot
+  - Place the Spear onto Rognor
+  - "Click Ragnor and drag the red arrow \nonto the left most ennemy unit"
+  - "Cast your Spell onto the ennemy \non the middle slot"
+  - "Attack the ennemy on the middle \nspot with your Veneth"
+  - Play your spell onto the enemy nexus.
   TutoPageLeft: {fileID: 1711302639}
   TutoPageRight: {fileID: 747067682}
   TutoTextLeft: {fileID: 418048524}

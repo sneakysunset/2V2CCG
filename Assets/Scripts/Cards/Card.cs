@@ -96,8 +96,8 @@ public class Card : MonoBehaviour
         }
 
 
-        cardNameComp.text = cardName;
-        classNameComp.text = className;
+        cardNameComp.text = className;
+        
         switch (level)
         {
             case 0:
@@ -147,7 +147,7 @@ public class Card : MonoBehaviour
 
    public void UpdateLevelindex()
     {
-
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0); 
         switch (className)
         {
             case "Dwarf":
@@ -212,7 +212,7 @@ public class Card : MonoBehaviour
             if(scalerEnum != null) StopCoroutine(scalerEnum);
             scalerEnum = MoveAnimations.LerpToScaling(transform.localScale, hoveredEndScale, anchoringAnimCurve, transform, .2f);
             StartCoroutine(scalerEnum);
-            GetComponent<SortingGroup>().sortingOrder += 1;
+            GetComponent<SortingGroup>().sortingOrder = 3;
 
             if (!dragged && handSlotIndex != -1)
             {
@@ -225,10 +225,11 @@ public class Card : MonoBehaviour
 
     public virtual void OnMouseExitEvent()
     {
+       
         if (scalerEnum != null) StopCoroutine(scalerEnum);
         scalerEnum = MoveAnimations.LerpToScaling(transform.localScale, hoveredStartScale, anchoringAnimCurve, transform, .2f);
         StartCoroutine(scalerEnum);
-        GetComponent<SortingGroup>().sortingOrder += -1;
+        GetComponent<SortingGroup>().sortingOrder = 0;
         if (handSlotIndex != -1 && !dragged)
         {
             if (posEnum != null) StopCoroutine(posEnum);

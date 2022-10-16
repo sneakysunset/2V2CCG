@@ -30,20 +30,30 @@ public class TutorialManager : MonoBehaviour
     public float timer;
     public bool pause;
     public int toolTipIndex = 0;
-
+    [HideInInspector]public UnityEvent toolTipAnimEndEvent;
     private void Update()
     {
         if(!tutorialPlaying /*&& priorityHandler.currentPriority != 0*/)
         {
             tutorialPlaying = true;
             canPlay = false;
+            var startPos = toolTipText.transform.parent.position;
+            var endPos = startPos;
+            endPos.y = -1.69f;
+            StartCoroutine(MoveAnimations.LerpToAnchor(startPos, endPos, animCurveToolTips, toolTipText.transform.parent, 1));
             StartCoroutine(SimpleTimer(timer));
         }
-/*
-        if(priorityHandler.currentPriority != 0)
+
+        if (priorityHandler.currentPriority != 0)
         {
             toolTipText.text = "";
-        }*/
+        }
+    }
+
+    void ToolTipEndMethod()
+    {
+        toolTipText.text = canvasManager.ToolTipsTexts[toolTipIndex];
+        toolTipIndex++;
     }
 
     IEnumerator SimpleTimer(float timer)
@@ -51,12 +61,14 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitUntil(()=> !pause);
         yield return new WaitForSeconds(timer);
         print(tutorialEvents[tutorialIndex].TutorialStep);
+
         tutorialEvents[tutorialIndex].tutorialCall.Invoke(tutorialEvents[tutorialIndex].handSlotTargetOrDrawPlayerIndex, tutorialEvents[tutorialIndex].slotTargetOrDrawNumber, tutorialEvents[tutorialIndex].nextTuto, tutorialEvents[tutorialIndex].timerd);
     }
 
     private void Start()
     {
-        
+        toolTipText.text = "";
+        this.toolTipAnimEndEvent.AddListener(() => this.ToolTipEndMethod());
     }
 
     public void TutoTrigger()
@@ -108,8 +120,6 @@ public class TutorialManager : MonoBehaviour
         var startPos = toolTipText.transform.parent.position;
         var endPos = startPos;
         endPos.y -= 1;
-        StartCoroutine(MoveAnimations.LerpToAnchor(startPos, endPos, animCurveToolTips, toolTipText.transform.parent, 1)) ;
-        toolTipText.text = canvasManager.ToolTipsTexts[toolTipIndex];
-        toolTipIndex++;
+        StartCoroutine(MoveAnimations.LerpToAnchor(startPos, endPos, animCurveToolTips, toolTipText.transform.parent, 1, toolTipAnimEndEvent)) ;
     }
 }

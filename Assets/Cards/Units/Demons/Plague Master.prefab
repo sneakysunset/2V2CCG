@@ -560,7 +560,7 @@ MonoBehaviour:
   positionningSpeed: 0.3
   hoveringSpeed: 0.5
   level: 1
-  cardName: Plague Master
+  cardName: Jack
   className: Demon
   cardImage: {fileID: 21300000, guid: 9d673d8316306c64e8e66d6fd1a93876, type: 3}
   cardOverlay: {fileID: 21300000, guid: 5a932a93ffe9b5142b6931e036b41d93, type: 3}

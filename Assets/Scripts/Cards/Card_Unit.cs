@@ -32,6 +32,7 @@ public class Card_Unit : Card
         this.endCoroutineEffect.AddListener(() => this.EndCoroutineEffect());
         boardSlotsManager = FindObjectOfType<BoardSlotsManager>();
         base.Start();
+        classNameComp.text = cardName;
         attackTextComp.text = "" + attack;
         defenseTextComp.text = "" + defense;
     }
@@ -47,6 +48,8 @@ public class Card_Unit : Card
         if(defense <= 0)
         {
             boardSlotsManager.boardSlot[currentHoveredBoardSlot] = null;
+            //boardSlotsManager.boardSlotTransform[currentHoveredBoardSlot].GetComponent<Collider2D>().enabled = true;
+
             Destroy(this.gameObject);
         }
     }
@@ -117,6 +120,7 @@ public class Card_Unit : Card
             tutorialManager.tutorialPlaying = false;
             hoveredStartScale.x = 1.5f;
             hoveredStartScale.y = 1.5f;
+            //boardSlotsManager.boardSlotTransform[currentHoveredBoardSlot].GetComponent<Collider2D>().enabled = false;
              MoveAnimations.LerpToScaling(transform.localScale, hoveredStartScale, anchoringAnimCurve, transform, .2f);
             base.CardUsed();
         }
@@ -126,6 +130,8 @@ public class Card_Unit : Card
             boardSlotsManager.boardSlot[currentHoveredBoardSlot] = this;
             hoveredStartScale.x = 1.5f;
             hoveredStartScale.y = 1.5f;
+            //boardSlotsManager.boardSlotTransform[currentHoveredBoardSlot].GetComponent<Collider2D>().enabled = false;
+
             MoveAnimations.LerpToScaling(transform.localScale, hoveredStartScale, anchoringAnimCurve, transform, .2f);
             tutorialManager.tutorialPlaying = false;
 
@@ -244,7 +250,7 @@ public class Card_Unit : Card
             highlight.SetActive(false);
         }
         highlights.Clear();
-        StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, attackTargetTransform.position, attackAnimationCurve, transform, .6f));
+        StartCoroutine(MoveAnimations.AttackLerpToAnchor(transform.position, attackTargetTransform.position, attackAnimationCurve, transform, .6f));
 
         if (target)
         {
@@ -272,6 +278,7 @@ public class Card_Unit : Card
     #region IA Actions
     bool tuto;
     float timer;
+    Vector3 targetp;
     public override void IAPlay(int targetIndex, bool nextTuto, float timerd)
     {
         tuto = nextTuto;
@@ -283,8 +290,9 @@ public class Card_Unit : Card
             cardFrontComp.SetActive(true);
             cardFaceRevealed = true;
         }
-
-        StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, boardSlotsManager.boardSlotTransform[targetIndex].position, anchoringAnimCurve, transform, .3f, endCoroutineEffect));
+        targetp = boardSlotsManager.boardSlotTransform[targetIndex].position;
+        targetp.z = 0;
+        StartCoroutine(MoveAnimations.LerpToAnchor(transform.position,targetp, anchoringAnimCurve, transform, .3f, endCoroutineEffect));
     }
 
     public override void IAAttack(int targetIndex, bool nextTuto, float timerd)
@@ -303,7 +311,7 @@ public class Card_Unit : Card
                 targetCor = boardSlotsManager.nexusHPT2.transform.position;
             else targetCor = boardSlotsManager.nexusHPT1.transform.position;
         } 
-        StartCoroutine(MoveAnimations.LerpToAnchor(transform.position, targetCor, attackAnimationCurve, transform, .6f));
+        StartCoroutine(MoveAnimations.AttackLerpToAnchor(transform.position, targetCor, attackAnimationCurve, transform, .6f));
 
         if (target)
         {
@@ -351,7 +359,7 @@ public class Card_Unit : Card
             tutorialManager.canPlay = true;
             tutorialManager.changeToolTip();
         }
-
+        transform.position = targetp;
     }
 
     #endregion

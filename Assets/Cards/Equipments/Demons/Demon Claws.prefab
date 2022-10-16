@@ -1172,10 +1172,10 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6674759030998450790}
-  m_Text: Nain
+  m_Text: "Demon\n Claw"
   m_OffsetZ: 0
   m_CharacterSize: 1
-  m_LineSpacing: 1
+  m_LineSpacing: 0.82
   m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
