@@ -104,4 +104,9 @@ public class CardLogic : MonoBehaviour
     {
         UpdateCard();
     }
+
+    private void OnDrawGizmos()
+    {
+        UpdateCard();
+    }
 }
