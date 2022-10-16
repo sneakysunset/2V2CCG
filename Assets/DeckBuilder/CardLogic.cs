@@ -81,11 +81,17 @@ public class CardLogic : MonoBehaviour
                 break;
             case 1:
                 Star1.gameObject.SetActive(true);
+                Star2.gameObject.SetActive(false);
+                Star3.gameObject.SetActive(false);
                 break;
             case 2:
+                Star1.gameObject.SetActive(false);
                 Star2.gameObject.SetActive(true);
+                Star3.gameObject.SetActive(false);
                 break;
             case 3:
+                Star1.gameObject.SetActive(false);
+                Star2.gameObject.SetActive(false);
                 Star3.gameObject.SetActive(true);
                 break;
 

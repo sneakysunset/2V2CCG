@@ -613,14 +613,17 @@ MonoBehaviour:
   defenseTextComp: {fileID: 1059636796536140571}
   currentBoardSlot: {fileID: 0}
   currentHoveredBoardSlot: 0
-  attack: 5
-  defense: 6
+  attack: 8
+  defense: 10
   endCoroutineEffect:
     m_PersistentCalls:
       m_Calls: []
   arrowPointer: {fileID: 9205533881798335585, guid: c7cca51dd9aace641a708d84dd6e8d4d, type: 3}
   equipmentT1: {fileID: 1775209808197258393}
   equipmentT2: {fileID: 2371403848970895227}
+  playerAttackAnimEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
   highlights: []
   attackAnimationCurve:
     serializedVersion: 2

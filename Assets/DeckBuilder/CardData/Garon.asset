@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eed7589d916d4ac4a9982d566d90825d, type: 3}
-  m_Name: Data
+  m_Name: Garon
   m_EditorClassIdentifier: 
-  typeDeCarte: 0
+  typeDeCarte: 1
   Class: 0
-  nameT: 
-  attack: 0
-  defense: 0
-  spellPower: 0
+  nameT: Rognor
+  attack: 3
+  defense: 2
+  spellPower: 8
   niveau: 0
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: 5e1d2961484567545a7f84acab5565ec, type: 3}
