@@ -19,6 +19,12 @@ public class CardLogic : MonoBehaviour
     public Color colorNain, colorElf, colorDemon;
     private void Start()
     {
+
+    }
+
+    [ContextMenu("UpdateCardValue")]
+    public void UpdateCard()
+    {
         switch (card_Data.typeDeCarte)
         {
             case SO_Card.cardType.equipment:
@@ -86,7 +92,10 @@ public class CardLogic : MonoBehaviour
         }
 
         cardImage.sprite = card_Data.Image;
+    }
 
-
+    private void Update()
+    {
+        UpdateCard();
     }
 }
