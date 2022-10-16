@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   typeDeCarte: 1
-  Class: 0
+  Class: 2
   nameT: Rognor
-  attack: 4
-  defense: 2
+  attack: 3
+  defense: 1
   spellPower: 0
-  niveau: 2
+  niveau: 0
   Image: {fileID: 21300000, guid: 22086386ded797a46a4fcf5cca74df59, type: 3}
