@@ -66,8 +66,8 @@ public class CardLogic : MonoBehaviour
                 Star2.color = colorNain;
                 Star3.color = colorNain;
                 break;
-            case SO_Card.classType.Elf:
-                cardClass.text = "Elf";
+            case SO_Card.classType.Elfe:
+                cardClass.text = "Elfe";
                 Star1.color = colorElf;
                 Star2.color = colorElf;
                 Star3.color = colorElf;

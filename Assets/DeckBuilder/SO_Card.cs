@@ -6,7 +6,7 @@ using UnityEngine;
 public class SO_Card : ScriptableObject
 {
     public enum cardType {spell, unit, equipment };
-    public enum classType {Nain, Elf, Demon };
+    public enum classType {Nain, Elfe, Demon };
 
     public cardType typeDeCarte;
     public classType Class;

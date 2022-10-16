@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeDeCarte: 2
   Class: 0
-  nameT: Rognor
+  nameT: "Mj\xF6lnir"
   attack: 7
   defense: 3
   spellPower: 8

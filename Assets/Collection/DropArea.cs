@@ -18,9 +18,14 @@ public class DropArea : MonoBehaviour
     {
         card.GetComponent<UIDragAndDrop>().canvasGroup.blocksRaycasts = true;
         GameObject cardclone = Instantiate(card, gridLayout);
-        if(gridLayout.GetComponent<Collection>().collectionType == Collection.CollectionType.Deck)
+        if(gridLayout.GetComponent<Collection>().collectionType == Collection.CollectionType.Deck && !gridLayout.GetComponent<Collection>().cards.Contains(card))
             gridLayout.GetComponent<Collection>().Add(cardclone);
         
         Destroy(card);
+    }
+    public void Remove(GameObject card)
+    {
+        if (gridLayout.GetComponent<Collection>().collectionType == Collection.CollectionType.Deck && gridLayout.GetComponent<Collection>().cards.Contains(card))
+            gridLayout.GetComponent<Collection>().Remove(card);
     }
 }
