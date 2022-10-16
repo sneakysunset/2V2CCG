@@ -17,8 +17,9 @@ public class DropArea : MonoBehaviour
     public void Add(GameObject card)
     {
         card.GetComponent<UIDragAndDrop>().canvasGroup.blocksRaycasts = true;
-        Instantiate(card, gridLayout);
-        gridLayout.GetComponent<Collection>().Add(card);
+        GameObject cardclone = Instantiate(card, gridLayout);
+        if(gridLayout.GetComponent<Collection>().collectionType == Collection.CollectionType.Deck)
+            gridLayout.GetComponent<Collection>().Add(cardclone);
         
         Destroy(card);
     }

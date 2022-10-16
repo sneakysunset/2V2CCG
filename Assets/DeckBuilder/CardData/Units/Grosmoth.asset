@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeDeCarte: 1
   Class: 0
-  nameT: Rognor
+  nameT: Grosmoth
   attack: 8
   defense: 10
   spellPower: 8
   niveau: 2
-  Image: {fileID: 21300000, guid: 5e1d2961484567545a7f84acab5565ec, type: 3}
+  Image: {fileID: 21300000, guid: 4f034ad6fc155c049a3d6f7e86e533d7, type: 3}

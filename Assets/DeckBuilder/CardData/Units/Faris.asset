@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeDeCarte: 1
   Class: 2
-  nameT: Veneth
+  nameT: Faris
   attack: 4
   defense: 4
   spellPower: 8

@@ -1198,6 +1198,82 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &5859582252765934298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2954614739683620365}
+  - component: {fileID: 5524472684170983631}
+  - component: {fileID: 5314644660404352962}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &2954614739683620365
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5859582252765934298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6217331138061071602}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -23.599998}
+  m_SizeDelta: {x: 100, y: 147.2}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5524472684170983631
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5859582252765934298}
+  m_CullTransparentMesh: 1
+--- !u!114 &5314644660404352962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5859582252765934298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.68235296}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6385424872542251094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,7 +1516,7 @@ GameObject:
   - component: {fileID: 6810681549202749031}
   - component: {fileID: 7120677637536178686}
   m_Layer: 5
-  m_Name: Card
+  m_Name: Zinzolin Le cruel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1469,6 +1545,7 @@ RectTransform:
   - {fileID: 1567073932851526160}
   - {fileID: 7020348028571979058}
   - {fileID: 400338419215669721}
+  - {fileID: 2954614739683620365}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1489,7 +1566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb49b14a83eb33743a2cd3a17ab5b12a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card_Data: {fileID: 11400000, guid: 4fd1854aad779f241aa7209ab0b0d7a0, type: 2}
+  card_Data: {fileID: 0}
   cardImage: {fileID: 3997255005623202756}
   cardFond: {fileID: 4900555817146012120}
   Star3: {fileID: 5366773201298343693}
@@ -1511,6 +1588,8 @@ MonoBehaviour:
   colorNain: {r: 0.6901961, g: 0.75686276, b: 0.9529412, a: 1}
   colorElf: {r: 0.5803922, g: 0.9372549, b: 0.23529412, a: 1}
   colorDemon: {r: 0.79607844, g: 0.21960784, b: 0.101960786, a: 1}
+  darkImage: {fileID: 5859582252765934298}
+  isActive: 1
 --- !u!114 &6810681549202749031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1523,6 +1602,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 422effe145b42a545ba9013a1c7cae8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 0}
+  dropAreasCanvasGroup:
+  - {fileID: 0}
+  - {fileID: 0}
+  clone: {fileID: 0}
+  isOriginal: 1
+  isDrag: 0
 --- !u!225 &7120677637536178686
 CanvasGroup:
   m_ObjectHideFlags: 0

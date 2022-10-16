@@ -17,6 +17,9 @@ public class CardLogic : MonoBehaviour
     public Sprite fondSpell, fondUnit, fondEquipment;
     public Color colorSpell, colorUnit, colorEquipment;
     public Color colorNain, colorElf, colorDemon;
+
+    [SerializeField] GameObject darkImage;
+    public bool isActive = true;
     private void Start()
     {
 
@@ -25,7 +28,11 @@ public class CardLogic : MonoBehaviour
     [ContextMenu("UpdateCardValue")]
     public void UpdateCard()
     {
-        gameObject.name = card_Data.nameT;
+        if (isActive) darkImage.SetActive(false);
+        else darkImage.SetActive(true);
+
+        if(card_Data != null)
+            gameObject.name = card_Data.nameT;
         switch (card_Data.typeDeCarte)
         {
             case SO_Card.cardType.equipment:
