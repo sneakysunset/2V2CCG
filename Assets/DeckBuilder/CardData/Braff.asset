@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeDeCarte: 1
   Class: 0
-  nameT: Rognor
-  attack: 3
-  defense: 2
-  spellPower: 8
-  niveau: 0
-  Image: {fileID: 21300000, guid: 5e1d2961484567545a7f84acab5565ec, type: 3}
+  nameT: Braff
+  attack: 5
+  defense: 5
+  spellPower: 1
+  niveau: 1
+  Image: {fileID: 21300000, guid: 7de0631af290ae545b6fcbaffa7eff82, type: 3}
