@@ -25,6 +25,7 @@ public class CardLogic : MonoBehaviour
     [ContextMenu("UpdateCardValue")]
     public void UpdateCard()
     {
+        gameObject.name = card_Data.nameT;
         switch (card_Data.typeDeCarte)
         {
             case SO_Card.cardType.equipment:

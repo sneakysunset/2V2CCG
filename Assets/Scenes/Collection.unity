@@ -969,7 +969,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (23)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -1074,7 +1074,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (16)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -1281,6 +1281,109 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267168489}
   m_CullTransparentMesh: 1
+--- !u!1 &292749928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 292749929}
+  - component: {fileID: 292749932}
+  - component: {fileID: 292749931}
+  - component: {fileID: 292749930}
+  - component: {fileID: 292749933}
+  m_Layer: 5
+  m_Name: DropArea Deck
+  m_TagString: dropArea
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &292749929
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292749928}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 869428522}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 794.7273, y: -44.24942}
+  m_SizeDelta: {x: 232.5559, y: 924.4993}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &292749930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292749928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a408d981abf74e419dba80c15edbcc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridLayout: {fileID: 817328108}
+--- !u!114 &292749931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292749928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.9202046, g: 1, b: 0.08018869, a: 0.105882354}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &292749932
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292749928}
+  m_CullTransparentMesh: 1
+--- !u!225 &292749933
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292749928}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!224 &358387198 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -1387,7 +1490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (13)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -1580,7 +1683,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (10)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -1685,7 +1788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (24)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -2332,8 +2435,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (2)
+      value: Garon
       objectReference: {fileID: 0}
+    - target: {fileID: 8410271626749925296, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
+      propertyPath: card_Data
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e9d97ba2b8a77d4587581ee5e076ac0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
 --- !u!1001 &607143136
@@ -2437,7 +2544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (15)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -2552,7 +2659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (1)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -2784,8 +2891,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (5)
+      value: Veneth
       objectReference: {fileID: 0}
+    - target: {fileID: 8410271626749925296, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
+      propertyPath: card_Data
+      value: 
+      objectReference: {fileID: 11400000, guid: 25480940c0a51534f9270d01a4db65ad, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
 --- !u!1001 &790073902
@@ -2889,7 +3000,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (27)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -2928,8 +3039,6 @@ RectTransform:
   - {fileID: 1135655930}
   - {fileID: 1920614928}
   - {fileID: 358387198}
-  - {fileID: 920371018}
-  - {fileID: 1611962740}
   - {fileID: 1905980194}
   m_Father: {fileID: 1501510077}
   m_RootOrder: 1
@@ -3081,7 +3190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (22)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -3185,6 +3294,8 @@ RectTransform:
   - {fileID: 940579111}
   - {fileID: 1013237410}
   - {fileID: 504564125}
+  - {fileID: 1547505331}
+  - {fileID: 292749929}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3370,11 +3481,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 889927114}
   m_CullTransparentMesh: 1
---- !u!224 &920371018 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-  m_PrefabInstance: {fileID: 1657052552}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &920657868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3474,10 +3580,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7323204074758697242, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (4)
+      value: Gurum
       objectReference: {fileID: 0}
+    - target: {fileID: 8410271626749925296, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
+      propertyPath: card_Data
+      value: 
+      objectReference: {fileID: 11400000, guid: fbb04718322e27949992cbfbe6339328, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
 --- !u!1 &922498985
@@ -3776,7 +3890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (5)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -4400,7 +4514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (8)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -4622,7 +4736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (9)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -4849,7 +4963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (17)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -4959,7 +5073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (4)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -5079,7 +5193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (25)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -5194,7 +5308,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (11)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -5299,8 +5413,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (1)
+      value: Braff
       objectReference: {fileID: 0}
+    - target: {fileID: 8144487794101508832, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410271626749925296, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
+      propertyPath: card_Data
+      value: 
+      objectReference: {fileID: 11400000, guid: 67ebef60042d88843ac147afac27bf2f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
 --- !u!1001 &1392453364
@@ -5404,7 +5526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (21)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -5763,7 +5885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (6)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -6315,6 +6437,109 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!1 &1547505330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1547505331}
+  - component: {fileID: 1547505334}
+  - component: {fileID: 1547505333}
+  - component: {fileID: 1547505332}
+  - component: {fileID: 1547505335}
+  m_Layer: 5
+  m_Name: DropAreaCollection
+  m_TagString: dropArea
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1547505331
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547505330}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 869428522}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 130.62094, y: -44.24942}
+  m_SizeDelta: {x: 1025.2417, y: 924.4993}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1547505332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547505330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a408d981abf74e419dba80c15edbcc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridLayout: {fileID: 999241699}
+--- !u!114 &1547505333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547505330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.9202046, g: 1, b: 0.08018869, a: 0.105882354}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1547505334
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547505330}
+  m_CullTransparentMesh: 1
+--- !u!225 &1547505335
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547505330}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1568866905 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -6536,11 +6761,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
   m_PrefabInstance: {fileID: 360253373}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &1611962740 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-  m_PrefabInstance: {fileID: 2076510798}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1614153234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6642,112 +6862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (14)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
---- !u!1001 &1657052552
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 817328108}
-    m_Modifications:
-    - target: {fileID: 4252198045417817497, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_Name
-      value: Card (6)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -6990,10 +7105,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7323204074758697242, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (3)
+      value: Rognor
       objectReference: {fileID: 0}
+    - target: {fileID: 8410271626749925296, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
+      propertyPath: card_Data
+      value: 
+      objectReference: {fileID: 11400000, guid: 10b3a3d0c5c66a34889eecd06cbfe0ad, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
 --- !u!1 &1732890696 stripped
@@ -7229,7 +7352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (18)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -7604,7 +7727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (19)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -7709,7 +7832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (12)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -7851,7 +7974,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (7)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -7961,7 +8084,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (20)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -8066,7 +8189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (3)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -8292,7 +8415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (26)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -8656,7 +8779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -8842,7 +8965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (2)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -8937,111 +9060,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2057821948}
   m_CullTransparentMesh: 1
---- !u!1001 &2076510798
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 817328108}
-    m_Modifications:
-    - target: {fileID: 4252198045417817497, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
-      propertyPath: m_Name
-      value: Card (7)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
 --- !u!1 &2124623660 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
@@ -9073,7 +9091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6217331138061071602, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_AnchorMax.x
@@ -9153,7 +9171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7555746435528146781, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}
       propertyPath: m_Name
-      value: Card (8)
+      value: Zinzolin Le cruel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f0023c258f716940be0e8946c4e5564, type: 3}

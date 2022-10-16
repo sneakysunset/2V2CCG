@@ -14,36 +14,36 @@ public class Collection : MonoBehaviour
 
     public GameObject collectionSlotPrefab;
     public Transform collectionLayout;
-    private void Update()
-    {
-        switch (collectionType)
-        {
-            case Collection.CollectionType.Collection:
-                space = cards.Count;
-                break;
-            case Collection.CollectionType.Deck:
-                break;
-            default:
-                break;
-        }
+    //private void Update()
+    //{
+    //    switch (collectionType)
+    //    {
+    //        case Collection.CollectionType.Collection:
+    //            space = cards.Count;
+    //            break;
+    //        case Collection.CollectionType.Deck:
+    //            break;
+    //        default:
+    //            break;
+    //    }
             
 
-        if (collectionLayout.childCount > space)
-        {
-            for (int i = collectionLayout.childCount; i > space; i--)
-            {
-                GameObject child = collectionLayout.transform.GetChild(i - 1).gameObject;
-                Destroy(child);
-            }
-        }
-        if (collectionLayout.childCount < space)
-        {
-            for (int i = collectionLayout.childCount; i < space; i++)
-            {
-                Instantiate(collectionSlotPrefab, collectionLayout);
-            }
-        }
-    }
+    //    if (collectionLayout.childCount > space)
+    //    {
+    //        for (int i = collectionLayout.childCount; i > space; i--)
+    //        {
+    //            GameObject child = collectionLayout.transform.GetChild(i - 1).gameObject;
+    //            Destroy(child);
+    //        }
+    //    }
+    //    if (collectionLayout.childCount < space)
+    //    {
+    //        for (int i = collectionLayout.childCount; i < space; i++)
+    //        {
+    //            Instantiate(collectionSlotPrefab, collectionLayout);
+    //        }
+    //    }
+    //}
 
     public void Add(GameObject card)
     {
