@@ -96,7 +96,7 @@ public class CardLogic : MonoBehaviour
                 break;
 
         }
-
+        cardName.text = card_Data.nameT;
         cardImage.sprite = card_Data.Image;
     }
 

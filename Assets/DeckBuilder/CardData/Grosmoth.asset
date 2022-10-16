@@ -15,8 +15,8 @@ MonoBehaviour:
   typeDeCarte: 1
   Class: 0
   nameT: Rognor
-  attack: 3
-  defense: 2
+  attack: 8
+  defense: 10
   spellPower: 8
-  niveau: 0
+  niveau: 2
   Image: {fileID: 21300000, guid: 5e1d2961484567545a7f84acab5565ec, type: 3}
