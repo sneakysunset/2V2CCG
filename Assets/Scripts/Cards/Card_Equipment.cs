@@ -82,11 +82,11 @@ public class Card_Equipment : Card
 
             if(targetUnit.equipmentT1.text.Length < 3)
             {
-                targetUnit.equipmentT1.text = "Equipment 1 : +" + attack + " +" + defense;
+                targetUnit.equipmentT1.text = "Equipement 1 : +" + attack + " +" + defense;
             }
             else
             {
-                targetUnit.equipmentT2.text = "Equipment 1 : +" + attack + " +" + defense;
+                targetUnit.equipmentT2.text = "Equipement 2 : +" + attack + " +" + defense;
             }
             tutorialManager.tutorialPlaying = false;
             base.CardUsed();
@@ -143,7 +143,7 @@ public class Card_Equipment : Card
         }
         else
         {
-            targetUnit.equipmentT2.text = "Equipment 1 : +" + attack + " +" + defense;
+            targetUnit.equipmentT2.text = "Equipment 2 : +" + attack + " +" + defense;
         }
         tutorialManager.tutorialIndex++;
         tutorialManager.timer = timer;

@@ -1011,7 +1011,7 @@ MonoBehaviour:
   hoveringSpeed: 0.5
   level: 0
   cardName: Chaotic Shield
-  className: Elf
+  className: Elfe
   cardImage: {fileID: 21300000, guid: e18ddb96e2f5e164cba0b9399b34113e, type: 3}
   cardOverlay: {fileID: 21300000, guid: 000e0aec952e2894289eb837eea08ca3, type: 3}
   star1: {fileID: 21300000, guid: 8fbef450fdb17be4fb7c58ab587612f2, type: 3}
@@ -1115,7 +1115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6674759030998450790}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6, z: 10}
+  m_LocalPosition: {x: 0.4, y: -0.6, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1172,9 +1172,11 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6674759030998450790}
-  m_Text: "Chaotic\n Shield"
+  m_Text: ' Bouclier
+
+    Chaotique'
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 0.79
   m_LineSpacing: 0.82
   m_Anchor: 4
   m_Alignment: 0

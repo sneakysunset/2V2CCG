@@ -647,7 +647,7 @@ MonoBehaviour:
   hoveringSpeed: 0.5
   level: 1
   cardName: Veneth
-  className: Elf
+  className: Elfe
   cardImage: {fileID: 21300000, guid: 7de9c7924a9d43e4399f644c734d30b1, type: 3}
   cardOverlay: {fileID: 21300000, guid: 5a932a93ffe9b5142b6931e036b41d93, type: 3}
   star1: {fileID: 21300000, guid: 8fbef450fdb17be4fb7c58ab587612f2, type: 3}
@@ -705,6 +705,9 @@ MonoBehaviour:
   arrowPointer: {fileID: 9205533881798335585, guid: c7cca51dd9aace641a708d84dd6e8d4d, type: 3}
   equipmentT1: {fileID: 2685530960224950385}
   equipmentT2: {fileID: 2964541998465717949}
+  playerAttackAnimEndEvent:
+    m_PersistentCalls:
+      m_Calls: []
   highlights: []
   attackAnimationCurve:
     serializedVersion: 2

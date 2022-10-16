@@ -72,11 +72,11 @@ public class PriorityHandler : MonoBehaviour
             //PriorityButtonImage.color = grey
             if (currentPriority == 1)
             {
-                PriorityButtonText.text = "Ally Turn";
+                PriorityButtonText.text = "Tour Allié";
             }
             else if (currentPriority > 1)
             {
-                PriorityButtonText.text = "Ennemy Turn";
+                PriorityButtonText.text = "Tour Ennemi";
             }
         }
         else
@@ -84,11 +84,11 @@ public class PriorityHandler : MonoBehaviour
             PriorityButton.interactable = true;
             if (handManager.Hands[1].actionTokenNumber == 0)
             {
-                PriorityButtonText.text = "End turn";
+                PriorityButtonText.text = "Terminer le tour";
             }
             else
             {
-                PriorityButtonText.text = "Skip";
+                PriorityButtonText.text = "Passer la priorité";
             }
         }
     }

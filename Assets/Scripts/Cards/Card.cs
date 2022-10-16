@@ -81,10 +81,10 @@ public class Card : MonoBehaviour
 
         switch (className)
         {
-            case "Dwarf":
+            case "Nain":
                 lvlCondition = handManager.Hands[priorityHandler.currentPriority].dwarfLvlIndex;
                 break;
-            case "Elf":
+            case "Elfe":
                 lvlCondition = handManager.Hands[priorityHandler.currentPriority].elfLvlIndex;
                 break;
             case "Demon":
@@ -150,12 +150,12 @@ public class Card : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, 0); 
         switch (className)
         {
-            case "Dwarf":
+            case "Nain":
                 lvlCondition = handManager.Hands[playerIndexer].dwarfLvlIndex;
                 ColorChange(cardManager.dwarfColor, lvlCondition);
 
                 break;
-            case "Elf":
+            case "Elfe":
                 lvlCondition = handManager.Hands[playerIndexer].elfLvlIndex;
                 ColorChange(cardManager.elfColor, lvlCondition);
                 break;
@@ -174,13 +174,13 @@ public class Card : MonoBehaviour
     {
         switch (className)
         {
-            case "Dwarf":
+            case "Nain":
                 handManager.Hands[priorityHandler.currentPriority].dwarfLvlIndex++;
                 lvlCondition = handManager.Hands[priorityHandler.currentPriority].dwarfLvlIndex;
                 ColorChange(cardManager.dwarfColor, lvlCondition);
 
                 break;
-            case "Elf":
+            case "Elfe":
                 handManager.Hands[priorityHandler.currentPriority].elfLvlIndex++;
                 lvlCondition = handManager.Hands[priorityHandler.currentPriority].elfLvlIndex;
                 ColorChange(cardManager.elfColor, lvlCondition);
